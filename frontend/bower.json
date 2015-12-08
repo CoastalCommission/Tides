@@ -1,0 +1,23 @@
+{
+  "name": "tides",
+  "version": "0.0.1",
+  "homepage": "",
+  "authors": [
+    "Ca Coastal Commision / ISU / Zachariah Moreno"
+  ],
+  "description": "",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "UNLICENSED",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs-crypto": "~1.3.0"
+  }
+}

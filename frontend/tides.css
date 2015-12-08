@@ -1,0 +1,220 @@
+html, body {
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+.md-toolbar-tools h1 {
+    font-size: inherit;
+    font-weight: inherit;
+    margin: inherit;
+}
+
+header.nav-header img {
+    width: 85%;
+    display: block;
+    margin: 20px auto;
+}
+
+md-sidenav.md-locked-open {
+    width: 200px !important;
+    min-width: 200px !important;
+    max-width: 200px !important;
+}
+
+md-toolbar {
+    height: 110px;
+    color: #546e7a !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.font-weight-100 {
+    font-weight: 100;
+}
+
+.font-weight-300 {
+    font-weight: 300;
+}
+
+.font-weight-400 {
+    font-weight: 400;
+}
+
+.font-weight-500 {
+    font-weight: 500;
+}
+
+ul.lined-list,
+ul.no-line-list {
+    padding: 0;
+    margin: 0;
+}
+
+ul.lined-list li,
+ul.no-line-list li {
+    list-style-type: none;
+    padding: 10px;
+    margin: 0;
+}
+
+ul.lined-list li {
+    border-bottom: 1px solid #B2DFDB;
+}
+
+ul.lined-list li:last-of-type {
+    border-bottom: none;
+}
+
+.max-view-height {
+    max-height: 90%;
+    max-height: 90vh;
+    overflow-y: scroll;
+}
+
+.eighty-five-view-height {
+    max-height: 85%;
+    max-height: 85vh;
+    overflow-y: scroll;
+}
+
+.align-left {
+    float: left;
+}
+
+.align-center {
+    display: block;
+    margin: auto;
+}
+
+.align-right {
+    float: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+input,
+.md-select-value {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    font-weight: 500;
+    border-bottom: 1px solid #D8D8D8;
+    border-radius: 0px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.block {
+    display: block;
+}
+
+#login-form {
+
+}
+
+#login-form button.md-fab {
+    background-color: #00E5FF;
+    margin-bottom: -40px;
+}
+
+#login-form button.md-fab md-icon {
+    color: #37474F;
+}
+
+md-list-item.md-no-proxy,
+md-list-item .md-no-style {
+    padding: 0px 16px 0px 0px;
+}
+
+
+#login img {
+    width: 15%;
+    padding-top: 47px;
+}
+
+#login md-toolbar {
+    background-color: #37474F !important;
+}
+
+#login md-card {
+    margin-top: -60px;
+}
+
+#login .md-layout-row.layout-wrap {
+    z-index: 99999;
+}
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10%, 0);
+    transform: translate3d(0, 10%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 10%, 0);
+    transform: translate3d(0, 10%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}

@@ -1,0 +1,174 @@
+<!doctype html>
+
+<!--[if lt IE 7]>      <html lang="en" ng-app="coastal" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="coastal" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="coastal" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="tides" class="no-js"> <!--<![endif]-->
+
+	<head>
+		<title>Tides</title>
+
+		<!-- meta -->
+			<meta charset="utf-8">
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<meta name="description" content="Micro Service Management System">
+
+    <!-- Add to homescreen for Chrome on Android -->
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+        <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+        <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- favicon -->
+        <link rel="shortcut icon" href="images/favicon.png" />
+
+		<!-- css -->
+			<!-- typefaces -->
+			<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Roboto:500,900,400italic,100,300,700,500italic,100italic,300italic,400' rel='stylesheet' type='text/css'>
+			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+			<!-- angular material -->
+            <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
+
+            <!-- material design color palette -->
+            <link rel="stylesheet" href="node_modules/material-design-color-palette/css/material-design-color-palette.css">
+
+			<!-- animate -->
+            <link rel="stylesheet" href="node_modules/animate.css/animate.css">
+
+			<!-- toaster -->
+            <link rel="stylesheet" href="node_modules/angularjs-toaster/toaster.css">
+
+			<!-- higgs -->
+			<link rel="stylesheet" href="tides.css">
+	</head>
+
+	<body layout="column" class="mdc-bg-blue-grey-200">
+        <!-- <md-toolbar>
+            <div class="md-toolbar-tools mdc-bg-blue-grey-900">
+                <md-button ng-click="vm.toggleSidenav('left')" hide-gt-sm class="md-icon-button">
+                    <md-icon aria-label="Menu" class="material-icons">
+                        menu
+                    </md-icon>
+                </md-button>
+            </div>
+        </md-toolbar> -->
+
+		<toaster-container>
+			<!-- feedback -->
+		</toaster-container>
+
+        <div layout="row" flex>
+            <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z4 mdc-bg-blue-grey-800 animated slideInLeft" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" ng-show="authenticated">
+                <header class="nav-header">
+                    <a href="#/dashboard" alt="Higs Field">
+						<img src="images/tides.png" class="animated fadeInDown"/>
+                    </a>
+
+					<!-- <p class="text-center mdc-text-blue-grey-600 no-margin animated fadeIn">
+						<small>presented by <strong><a href="http://thedisruptory.io" target="_blank" class="mdc-text-teal-A400">The Disruptory</a></strong></small>
+					</p> -->
+                </header>
+
+				<md-content layout-padding class="mdc-bg-blue-grey-800">
+					<!-- <h2 class="md-subhead no-margin text-center mdc-text-blue-grey-500">
+			            Microservices
+			        </h2> -->
+
+					<md-list>
+						<a ng-repeat="service in services | filter:searchQuery" ng-href="#/microservice/{{ service.id }}">
+							<md-list-item class="mdc-text-blue-grey-200">
+		                        <md-icon aria-label="Dashboard" class="mdc-text-{{ service.color }}-300 material-icons md-avatar-icon">
+		                            dashboard
+		                        </md-icon>
+
+								<p>{{ service.microserviceName }}</p>
+							</md-list-item>
+
+							<md-divider></md-divider>
+						</a>
+
+						<a href="#/add" class="mdc-text-blue-grey-200">
+							<md-list-item>
+		                        <md-icon aria-label="Add" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+		                            add
+		                        </md-icon>
+
+		                        <p>
+									New Service
+								</p>
+							</md-list-item>
+						</a>
+
+						<md-divider></md-divider>
+
+						<a href="" class="mdc-text-blue-grey-200" ng-click="logout()">
+							<md-list-item>
+			                    <md-icon aria-label="Login" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+			                        eject
+			                    </md-icon>
+
+								<p>
+			                    	Logout
+								</p>
+							</md-list-item>
+						</a>
+					</md-list>
+				</md-content>
+            </md-sidenav>
+
+            <div layout="column" flex id="content" class="mdc-bg-blue-grey-200" ng-view>
+                <!-- content -->
+
+				<!-- <footer class="mdc-bg-blue-grey-200 animated fadeInUp">
+			        <p class="text-center mdc-text-blue-grey-400">
+						<small>
+				            Made with <md-icon class="material-icons mdc-text-blue-grey-400">favorite</md-icon> by <a href="http://thedisruptory.io" target="_blank" class="mdc-text-blue-grey-400"><strong>The Disruptory</strong></a>
+						</small>
+			        </p>
+			    </footer> -->
+            </div> <!-- end #content -->
+
+
+        </div> <!-- end .row -->
+
+        <!-- js -->
+          <!-- angularjs -->
+          <script src="node_modules/angular/angular.js"></script>
+
+          <!-- angular community modules -->
+    	  		<script src="node_modules/angular-route/angular-route.js"></script>
+    			<script src="node_modules/angular-resource/angular-resource.js"></script>
+				<script src="node_modules/angular-cookies/angular-cookies.js"></script>
+                <script src="node_modules/angular-animate/angular-animate.js"></script>
+                <script src="node_modules/angular-aria/angular-aria.js"></script>
+				<script src="node_modules/angularjs-toaster/toaster.js"></script>
+
+    			<!-- angular material -->
+    			<script src="node_modules/angular-material/angular-material.js"></script>
+
+          <!-- higs modules -->
+            <!-- app -->
+            <script src="tides.js"></script>
+
+			<!-- services -->
+            <script src="services.js"></script>
+
+            <!-- pages -->
+			<script src="pages/login/login.js"></script>
+            <script src="pages/dashboard/dashboard.js"></script>
+			<script src="pages/add/add.js"></script>
+			<script src="pages/microservice/microservice.js"></script>
+
+    			<!-- elements -->
+    </body>
+</html>
