@@ -23,7 +23,7 @@
 
         <div layout="row" flex class="md-padding">
             <div layout flex>
-                <md-list class="85-vh block">
+                <md-list class="85-vh block" flex>
                     <md-list-item ng-repeat="agenda in agendas | filter:search" ng-click="editAgenda(agenda)" class="mdc-text-blue-grey-800" flex>
                         <p>{{ agenda.name_english }} {{ agenda.year }}</p>
 
