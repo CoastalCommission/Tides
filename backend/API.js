@@ -391,7 +391,9 @@
 
         .get('/get/agendas', function (req, res, next) {
             var sql = 'SELECT * ' +
-                      'FROM agendas_tbl';
+                      'FROM agendas_tbl ' +
+                      'INNER JOIN month_names_tbl ' +
+                      'ON month_names_tbl.id = agendas_tbl.month_id';
 
             tidesDB.all(sql, function(err, resultSetData) {
                 if(err !== null) {
@@ -405,47 +407,51 @@
 
 
         .post('/add/agendas', function(req, res, next) {
-            var year           = req.body.year,
-                venueName      = req.body.venueName,
-                venueAddress1  = req.body.venueAddress1,
-                venueAddress2  = req.body.venueAddress2,
-                venueCity      = req.body.venueCity,
-                venueState     = req.body.venueState,
-                venueZip       = req.body.venueZip,
-                venueLatitude  = req.body.venueLatitude,
-                venueLongitude = req.body.venueLongitude,
-                phoneNumber    = req.body.phoneNumber,
-                districtID     = req.body.districtID,
-                monthID        = req.body.monthID,
-                statusID       = req.body.statusID;
+            var year            = req.body.year,
+                venue_name      = req.body.venue_name,
+                venue_address_1 = req.body.venue_address_1,
+                venue_address_2 = req.body.venueAddress2,
+                venue_city      = req.body.venue_city,
+                venue_state     = req.body.venue_state,
+                venue_zip       = req.body.venue_zip,
+                venue_latitude  = req.body.venue_latitude,
+                venue_longitude = req.body.venue_longitude,
+                phone_number    = req.body.phone_number,
+                district_id     = req.body.district_id,
+                month_id        = req.body.month_id,
+                status_id       = req.body.status_id;
 
             tidesDB.beginTransaction(function(err, trans) {
-                trans.run("INSERT INTO 'agendas' (year, " +
-                                                 "venue_name, " +
-                                                 "venue_address_1, " +
-                                                 "venue_address_2, " +
-                                                 "venue_city, " +
-                                                 "venue_state, " +
-                                                 "venue_zip, " +
-                                                 "venue_latitude, " +
-                                                 "venue_longitude, " +
-                                                 "phone_number, " +
-                                                 "district_id, " +
-                                                 "month_id, " +
-                                                 "status_id) " +
-                          "VALUES(" + year           + ", '" +
-                                      venueName      + "', '" +
-                                      venueAddress1  + "', '" +
-                                      venueAddress2  + "', '" +
-                                      venueCity      + "', '" +
-                                      venueState     + "', '" +
-                                      venueZip       + "', '" +
-                                      venueLatitude  + "', '" +
-                                      venueLongitude + "', '" +
-                                      phoneNumber    + "', '" +
-                                      districtID     + "', '" +
-                                      monthID        + "', '" +
-                                      statusID       + "')");
+                var sql = "INSERT INTO 'agendas_tbl' (year, " +
+                                                     "venue_name, " +
+                                                     "venue_address_1, " +
+                                                     "venue_address_2, " +
+                                                     "venue_city, " +
+                                                     "venue_state, " +
+                                                     "venue_zip, " +
+                                                     "venue_latitude, " +
+                                                     "venue_longitude, " +
+                                                     "phone_number, " +
+                                                     "district_id, " +
+                                                     "month_id, " +
+                                                     "status_id) " +
+                          "VALUES(" + year            + ", '" +
+                                      venue_name      + "', '" +
+                                      venue_address_1 + "', '" +
+                                      venue_address_2 + "', '" +
+                                      venue_city      + "', '" +
+                                      venue_state     + "', '" +
+                                      venue_zip       + "', '" +
+                                      venue_latitude  + "', '" +
+                                      venue_longitude + "', '" +
+                                      phone_number    + "', '" +
+                                      district_id     + "', '" +
+                                      month_id        + "', '" +
+                                      status_id       + "')";
+
+                console.log(sql);
+
+                trans.run(sql);
 
                 trans.commit(function(err) {
                     if(err) {

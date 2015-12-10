@@ -85,27 +85,37 @@
 			        </h2> -->
 
 					<md-list>
-						<a ng-repeat="service in services | filter:searchQuery" ng-href="#/microservice/{{ service.id }}">
+						<a href="#/agendas">
 							<md-list-item class="mdc-text-blue-grey-200">
-		                        <md-icon aria-label="Dashboard" class="mdc-text-{{ service.color }}-300 material-icons md-avatar-icon">
-		                            dashboard
+		                        <md-icon aria-label="Delete" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+		                            gavel
 		                        </md-icon>
 
-								<p>{{ service.microserviceName }}</p>
+								<p>Meeting Agendas</p>
 							</md-list-item>
 
 							<md-divider></md-divider>
 						</a>
 
-						<a href="#/add" class="mdc-text-blue-grey-200">
-							<md-list-item>
-		                        <md-icon aria-label="Add" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
-		                            add
+						<a href="#/cleanup">
+							<md-list-item class="mdc-text-blue-grey-200">
+		                        <md-icon aria-label="Delete" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+		                            delete
 		                        </md-icon>
 
-		                        <p>
-									New Service
-								</p>
+								<p>Cleanup Day Locations</p>
+							</md-list-item>
+
+							<md-divider></md-divider>
+						</a>
+
+						<a href="#/access" class="mdc-text-blue-grey-200">
+							<md-list-item>
+		                        <md-icon aria-label="Beach Access" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+		                            beach_access
+		                        </md-icon>
+
+		                        <p>Access Locations</p>
 							</md-list-item>
 						</a>
 
@@ -166,8 +176,10 @@
             <!-- pages -->
 			<script src="pages/login/login.js"></script>
             <script src="pages/dashboard/dashboard.js"></script>
+			<script src="pages/agendas/agendas.js"></script>
+			<script src="pages/cleanup/cleanup.js"></script>
+			<script src="pages/access/access.js"></script>
 			<script src="pages/add/add.js"></script>
-			<script src="pages/microservice/microservice.js"></script>
 
     			<!-- elements -->
     </body>

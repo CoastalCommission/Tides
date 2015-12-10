@@ -17,7 +17,9 @@
        'tides.login',
        'tides.dashboard',
        'tides.add',
-       'tides.microservice'
+       'tides.agendas',
+       'tides.cleanup',
+       'tides.access'
     ])
 
 

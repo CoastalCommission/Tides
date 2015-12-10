@@ -14,7 +14,7 @@
     }])
 
 
-    .controller('LoginController', ['$scope', '$rootScope', '$location', '$cookies', '$cookieStore', 'AuthenticationAPI', 'AddUsersAPI', 'toaster', function($scope, $rootScope, $location, $cookies, $cookieStore, AuthenticationAPI, AddUsersAPI, toaster) {
+    .controller('LoginController', ['$scope', '$rootScope', '$location', '$cookies', '$cookieStore', 'AuthenticationAPI', 'toaster', function($scope, $rootScope, $location, $cookies, $cookieStore, AuthenticationAPI, toaster) {
 
         $scope.createAccount = false;
         $scope.loginForm = {};
@@ -22,7 +22,7 @@
 
         $scope.addUser = function addUser() {
             if($scope.addUserForm.password === $scope.addUserForm.confirm) {
-                var user = new AddUsersAPI.add($scope.addUserForm);
+                var user = new AuthenticationAPI.add($scope.addUserForm);
 
                 user.$save().then(function(res) {
                     if(res.added === true) {

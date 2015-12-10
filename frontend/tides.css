@@ -2,6 +2,14 @@ html, body {
     font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 
+md-toolbar input {
+    background-color: rgba(255, 255, 255, 0.33);
+    margin-left: 20px;
+    padding: 5px;
+    border-radius: 4px;
+    border: none;
+}
+
 .md-toolbar-tools h1 {
     font-size: inherit;
     font-weight: inherit;
@@ -21,8 +29,11 @@ md-sidenav.md-locked-open {
 }
 
 md-toolbar {
+    background-color: #263238 !important;
+}
+
+#login md-toolbar {
     height: 110px;
-    color: #546e7a !important;
 }
 
 a {
@@ -117,6 +128,12 @@ input,
     display: block;
 }
 
+md-list,
+md-card {
+    max-height: 85vh !important;
+    overflow-y: scroll;
+}
+
 #login-form {
 
 }
@@ -143,10 +160,12 @@ md-list-item .md-no-style {
 
 #login md-toolbar {
     background-color: #37474F !important;
+    z-index: 0;
 }
 
 #login md-card {
     margin-top: -60px;
+    z-index: 1;
 }
 
 #login .md-layout-row.layout-wrap {
