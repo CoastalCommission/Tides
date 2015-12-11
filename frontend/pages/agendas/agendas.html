@@ -32,82 +32,105 @@
                 </md-list> <!-- end row -->
             </div>
 
-            <md-card layout="column" flex="65">
-                <md-card-title class="mdc-bg-blue-500 md-padding">
-                    <md-card-title-text layout="row" flex>
-                        <md-input-container class="mdc-text-grey-200" flex="45">
-                            <label class="mdc-text-grey-200">Month</label>
+            <md-card layout="column" flex="75" class="mdc-bg-blue-500">
+                <md-card-content class="md-padding">
+                    <div layout="row">
+                        <md-input-container class="mdc-text-grey-100" flex="45">
+                            <label class="mdc-text-grey-100">Month</label>
                             <md-select ng-model="newAgenda.month">
-                                <md-option ng-repeat="month in months" value="{{ month.id }}">{{ month.name_english }}</md-option>
+                                <md-option ng-repeat="month in months" value="{{ month.id }}" class="mdc-text-grey-800">{{ month.name_english }}</md-option>
                             </md-select>
                         </md-input-container>
 
-                        <md-input-container class="mdc-text-grey-200" flex="45" flex-offset="10">
+                        <md-input-container class="mdc-text-grey-100" flex="45" flex-offset="10">
                             <label class="mdc-text-grey-200">Year</label>
                             <input ng-model="newAgenda.year" type="number"  class="mdc-text-grey-200">
                         </md-input-container>
-                    </md-card-title-text>
-                </md-card-title>
+                    </div> <!-- end row -->
 
-                <md-card-content>
-                    <div layout="column" flex="75" flex-offset="15" layout-align="start center">
-                        <md-input-container class="mdc-text-grey-200" flex>
-                            <label class="mdc-text-blue-700">Venue Name</label>
-                            <input ng-model="newAgenda.venue_name" type="text"  class="mdc-text-blue-700" flex>
+                    <div layout="row">
+                        <md-input-container class="mdc-text-grey-100" flex>
+                            <label class="mdc-text-grey-100">Venue Name</label>
+                            <input ng-model="newAgenda.venue_name" type="text"  class="mdc-text-grey-100 text-center" flex>
+                        </md-input-container>
+                    </div> <!-- end row -->
+
+
+                    <div layout="row">
+                        <md-input-container class="mdc-text-grey-100" flex>
+                            <label class="mdc-text-grey-100">Venue Address 1</label>
+                            <input ng-model="newAgenda.venue_address_1" type="text"  class="mdc-text-grey-100" flex>
                         </md-input-container>
 
-                        <md-input-container class="mdc-text-grey-200" flex>
-                            <label class="mdc-text-blue-700">Venue Address 1</label>
-                            <input ng-model="newAgenda.venue_address_1" type="text"  class="mdc-text-blue-700" flex>
+                        <md-input-container class="mdc-text-grey-100" flex flex-offset="5">
+                            <label class="mdc-text-grey-100">Venue Address 2</label>
+                            <input ng-model="newAgenda.venue_address_2" type="text"  class="mdc-text-grey-100" flex>
+                        </md-input-container>
+                    </div> <!-- end row -->
+
+                    <div layout="row">
+                        <md-input-container class="mdc-text-grey-100" flex="45">
+                            <label class="mdc-text-grey-100">City</label>
+                            <input ng-model="newAgenda.venue_city" type="text"  class="mdc-text-grey-100" flex>
                         </md-input-container>
 
-                        <md-input-container class="mdc-text-grey-200" flex>
-                            <label class="mdc-text-blue-700">Venue Address 2</label>
-                            <input ng-model="newAgenda.venue_address_2" type="text"  class="mdc-text-blue-700" flex>
+                        <md-input-container class="mdc-text-grey-100" flex flex-offset="5">
+                            <label class="mdc-text-grey-100">State</label>
+                            <input ng-model="newAgenda.venue_state" type="text"  class="mdc-text-grey-100" flex>
                         </md-input-container>
 
-                        <md-input-container class="mdc-text-grey-200" flex>
-                            <label class="mdc-text-blue-700">Venue City</label>
-                            <input ng-model="newAgenda.venue_city" type="text"  class="mdc-text-blue-700" flex>
+                        <md-input-container class="mdc-text-grey-100" flex flex-offset="5">
+                            <label class="mdc-text-grey-100">Zip</label>
+                            <input ng-model="newAgenda.venue_zip" type="text"  class="mdc-text-grey-100" flex>
+                        </md-input-container>
+                    </div> <!-- end row -->
+
+                    <div layout="row">
+                        <md-input-container class="mdc-text-grey-100" flex>
+                            <label class="mdc-text-grey-100">Latitude</label>
+                            <input ng-model="newAgenda.venue_latitude" type="text"  class="mdc-text-grey-100" flex>
                         </md-input-container>
 
-                        <md-input-container class="mdc-text-grey-200" flex>
-                            <label class="mdc-text-blue-700">Venue State</label>
-                            <input ng-model="newAgenda.venue_state" type="text"  class="mdc-text-blue-700" flex>
+                        <md-input-container class="mdc-text-grey-100" flex flex-offset="5">
+                            <label class="mdc-text-grey-100">Longitude</label>
+                            <input ng-model="newAgenda.venue_longitude" type="text"  class="mdc-text-grey-100" flex>
+                        </md-input-container>
+                    </div> <!-- end row -->
+
+                    <div layout="row">
+                        <md-input-container class="mdc-text-grey-100" flex>
+                            <label class="mdc-text-grey-100">Phone Number</label>
+                            <input ng-model="newAgenda.phone_number" type="text"  class="mdc-text-grey-100" flex>
                         </md-input-container>
 
-                        <md-input-container class="mdc-text-grey-200" flex>
-                            <label class="mdc-text-blue-700">Venue Zip Code</label>
-                            <input ng-model="newAgenda.venue_zip" type="text"  class="mdc-text-blue-700" flex>
-                        </md-input-container>
-
-                        <md-input-container class="mdc-text-grey-200" flex>
-                            <label class="mdc-text-blue-700">Venue Latitude</label>
-                            <input ng-model="newAgenda.venue_latitude" type="text"  class="mdc-text-blue-700" flex>
-                        </md-input-container>
-
-                        <md-input-container class="mdc-text-grey-200" flex>
-                            <label class="mdc-text-blue-700">Venue Longitude</label>
-                            <input ng-model="newAgenda.venue_longitude" type="text"  class="mdc-text-blue-700" flex>
-                        </md-input-container>
-
-                        <md-input-container class="mdc-text-grey-200" flex>
-                            <label class="mdc-text-blue-700">Phone Number</label>
-                            <input ng-model="newAgenda.phone_number" type="text"  class="mdc-text-blue-700" flex>
-                        </md-input-container>
-
-                        <md-input-container class="mdc-text-blue-700" flex>
-                            <label class="mdc-text-blue-700">District</label>
+                        <md-input-container class="mdc-text-grey-100" flex flex-offset="5">
+                            <label class="mdc-text-grey-100">District</label>
                             <md-select ng-model="newAgenda.district">
-                                <md-option ng-repeat="district in districts" value="{{ district.id }}">{{ district.name_english }}</md-option>
+                                <md-option ng-repeat="district in districts" value="{{ district.id }}" class="mdc-text-grey-800">{{ district.name_english }}</md-option>
                             </md-select>
                         </md-input-container>
-                    </div>
+                    </div> <!-- end row -->
                 </md-card-content>
 
-                <md-card-actions layout="row" layout-align="space-between center">
-                    <md-button>Delete</md-button>
-                    <md-button ng-click="addNewAgenda()">Save</md-button>
+                <md-card-actions layout="row" layout-align="space-between center" class="mdc-bg-blue-900">
+                    <md-button class="mdc-text-grey-100">
+                        <md-button class="md-icon-button" aria-label="Settings">
+                          <md-icon class="md-icons mdc-text-grey-100">
+                              delete
+                          </md-icon>
+                        </md-button>
+
+                        Delete
+                    </md-button>
+                    <md-button class="mdc-text-grey-100"  ng-click="addNewAgenda()">
+                        <md-button class="md-icon-button" aria-label="Settings">
+                          <md-icon class="md-icons mdc-text-grey-100">
+                              save
+                          </md-icon>
+                        </md-button>
+
+                        Save
+                    </md-button>
                 </md-card-actions>
             </md-card> <!-- end row -->
         </div> <!-- end .md-padding -->
