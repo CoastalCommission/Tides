@@ -37,16 +37,40 @@
         </div>
 
         <md-card layout="column" flex="65">
-            <md-card-content>
-                <h1>{{ editingStory.headline }}</h1>
+            <!-- <md-card-content flex> -->
+                <!-- <h1>{{ editingStory.headline }}</h1>
 
                 <md-input-container class="mdc-text-grey-800" flex="50">
                     <label class="mdc-text-grey-800">Type</label>
                     <md-select ng-model="editingStory.type">
                         <md-option ng-repeat="type in pressTypes" value="{{ type.icon }}" class="mdc-text-grey-800">{{ type.name }}</md-option>
                     </md-select>
-                </md-input-container>
-            </md-card-content>
+                </md-input-container> -->
+
+                <md-tabs md-dynamic-height="false" md-stretch-tabs="always" md-border-bottom flex>
+                    <md-tab label="Help">
+                        <md-content class="md-padding">
+                            <div marked src="'pages/press/help.md'" />
+                        </md-content>
+                    </md-tab>
+
+                    <md-tab label="Write" md-selected>
+                        <md-content class="md-padding">
+                            <form>
+                                <md-input-container class="md-block">
+                                    <textarea ng-model="editingStory.body" columns="1" rows="5"></textarea>
+                                </md-input-container>
+                            </form>
+                        </md-content>
+                    </md-tab>
+
+                    <md-tab label="Preview">
+                        <md-content class="md-padding">
+                            <div marked="editingStory.body" />
+                        </md-content>
+                    </md-tab>
+                </md-tabs>
+            <!-- </md-card-content> -->
         </md-card>
     </div> <!-- end .md-padding -->
 </md-content>

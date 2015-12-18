@@ -128,10 +128,19 @@ input,
     display: block;
 }
 
+md-tab-item span {
+    color: #0D47A1;
+}
+
 md-list,
 md-card {
     max-height: 85vh !important;
     overflow-y: scroll;
+}
+
+md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) {
+    overflow-y: scroll;
+    min-height: 85vh !important;
 }
 
 #login-form {
