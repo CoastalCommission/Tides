@@ -8,6 +8,7 @@
        'ngResource',
        'ngCookies',
        'ngMaterial',
+       'hc.marked',
        'toaster',
 
        // services
