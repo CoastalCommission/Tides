@@ -36,14 +36,16 @@ md-toolbar {
     height: 110px;
 }
 
-md-card.mdc-bg-blue-500 input,
-md-card.mdc-bg-blue-500 .md-select-value.md-select-placeholder,
-md-card.mdc-bg-blue-500 md-input-container label:not(.md-no-float),
-md-card.mdc-bg-blue-500 md-input-container .md-placeholder {
+md-card input,
+md-card .md-select-value.md-select-placeholder,
+md-card md-input-container label:not(.md-no-float),
+md-card md-input-container .md-placeholder {
     font-size: 20px;
     font-weight: 500;
-    border-color: white;
-    color: white;
+}
+
+#agenda-heading {
+    height: 150px;
 }
 
 a {
@@ -85,18 +87,6 @@ ul.lined-list li {
 
 ul.lined-list li:last-of-type {
     border-bottom: none;
-}
-
-.max-view-height {
-    max-height: 90%;
-    max-height: 90vh;
-    overflow-y: scroll;
-}
-
-.eighty-five-view-height {
-    max-height: 85%;
-    max-height: 85vh;
-    overflow-y: scroll;
 }
 
 .align-left {
@@ -180,6 +170,10 @@ md-list-item .md-no-style {
 
 #login .md-layout-row.layout-wrap {
     z-index: 99999;
+}
+
+.pull-up-60 {
+    margin-top: -60px;
 }
 
 @-webkit-keyframes fadeInUp {

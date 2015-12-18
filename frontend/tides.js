@@ -18,6 +18,7 @@
        'tides.dashboard',
        'tides.add',
        'tides.agendas',
+       'tides.press',
        'tides.cleanup',
        'tides.access'
     ])

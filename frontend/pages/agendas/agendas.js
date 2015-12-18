@@ -16,30 +16,60 @@
 
 
     .controller('AgendasController', ['$scope', '$rootScope', 'AgendasAPI', function($scope, $rootScope, AgendasAPI) {
-        $scope.newAgenda = {};
-        $scope.newAgenda.venue_state = "Ca";
+        $scope.newAgenda = {
+            'hearingDays': []
+        };
+
+        // $scope.addNewAgenda = function addNewAgenda() {
+        //     var agenda = new AgendasAPI.addNewAgenda($scope.newAgenda);
+        //     agenda.$save();
+        // };
+
+        $scope.addHearingDay = function addHearingDay() {
+            var newDay = {
+                'cards': []
+            };
+            $scope.newAgenda.hearingDays.push(newDay);
+
+            console.log($scope.newAgenda);
+        };
+
+        $scope.addCard = function addCard(index) {
+            var newCard = {
+                'categories': []
+            };
+            $scope.newAgenda.hearingDays[index].cards.push(newCard);
+
+            console.log($scope.newAgenda);
+        };
+
+        $scope.addCategory = function addCategory(parentIndex, index) {
+            var newCategory = {
+                'items': [{}]
+            };
+            $scope.newAgenda.hearingDays[parentIndex].cards[index].categories.push(newCategory);
+
+            console.log($scope.newAgenda);
+        }
 
         AgendasAPI.getAllAgendas.query(function(promisedAgendas) {
             $scope.agendas = promisedAgendas;
-
-            console.log($scope.agendas);
         });
-
-        $scope.addNewAgenda = function addNewAgenda() {
-            var agenda = new AgendasAPI.addNewAgenda($scope.newAgenda);
-            agenda.$save();
-        };
 
         AgendasAPI.getAllMonths.query(function(promisedMonths) {
             $scope.months = promisedMonths;
+        });
 
-            console.log($scope.months);
+        AgendasAPI.getAllDays.query(function(promisedDays) {
+            $scope.days = promisedDays;
         });
 
         AgendasAPI.getAllDistricts.query(function(promisedDistricts) {
             $scope.districts = promisedDistricts;
+        });
 
-            console.log($scope.districts);
+        AgendasAPI.getAllCategories.query(function(promisedCategories) {
+            $scope.categories = promisedCategories;
         });
     }]);
 })();
