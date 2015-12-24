@@ -15,22 +15,23 @@
     }])
 
 
-    .controller('PressController', ['$scope', '$rootScope', function($scope, $rootScope) {
+    .controller('PressController', ['$scope', '$rootScope', 'marked', function($scope, $rootScope, marked) {
+        var previewBuilder = function previewBuilder() {
+            return  '![CCC Letterhead](/images/ccc-letterhead.png) \n \n' +
+                        ' >> <h2 class="text-center">' + this.headline + '</h2> \n \n' +
+                        'Date: <strong>' + this.date + '</strong> \n \n' +
+                        'Contact: <strong>' + this.byline + '</strong> \n' +
+                        '_______ \n \n' +
+                        this.body
+        };
+
         $scope.stories = [
             {
                 'headline': 'Coastal Commission Prevails in Dana Point Beach Access Case',
                 'type': 'format_quote',
-                'body': '![CCC Letterhead](/images/ccc-letterhead.png) \n \n' +
-
-                    ' >> # Coastal Commission Prevails in Dana Point Beach Access Case \n \n' +
-
-                    'Date: **Sept. 18, 2015** \n \n' +
-
-                    'Contact: **Noaki Schwartz, public information officer, at (562) 833-5487** \n' +
-                    '_______ \n \n' +
-
-
-                    'DANA POINT, Calif. _ A judge on Thursday ruled that the city of Dana Point could not use claims of teenage partying to limit public beach access through a gated community of multimillion dollar homes. \n \n' +
+                'byline': ' Noaki Schwartz, PIO, at (562) 833-5487',
+                'date': 'July 7, 2015',
+                'body': 'DANA POINT, Calif. _ A judge on Thursday ruled that the city of Dana Point could not use claims of teenage partying to limit public beach access through a gated community of multimillion dollar homes. \n \n' +
 
                     'In a strongly worded decision, the court found that the city’s emergency ordinance was based on “nothing more than speculation, conjecture and fear mongering.” The decision is a significant victory for public access and clarifies that municipalities can’t circumvent the Coastal Act under the guise of protecting the public. \n \n' +
 
@@ -59,30 +60,39 @@
 
                     'Trapp called that “sheer speculation.” \n \n' +
 
-                    '“It made for good theater,” she wrote. “It was not, however, rooted in reality.”'
+                    '“It made for good theater,” she wrote. “It was not, however, rooted in reality.”',
+                'preview': previewBuilder
             },
             {
                 'headline': 'How Do You Get To YOUR COAST?',
                 'type': 'format_quote',
-                'body': '![CCC Letterhead](/images/ccc-letterhead.png) \n \n' +
-
-                    ' > # How Do You Get To YOUR COAST? \n \n' +
-
-                    'Date: **July 7, 2015** \n \n' +
-
-                    'Contact: **Noaki Schwartz, public information officer, at (562) 833-5487** \n' +
-                    '_______ \n \n' +
-
-                    '[YourCoast](http://yourcoast.org) is a free, online web app with all the valuable information from the California Coastal Commission\'s popular [California Coastal Access Guide](http://www.ucpress.edu/book.php?isbn=9780520278172) and [Experience the California Coast series](http://www.ucpress.edu/book.php?isbn=9780520258525). \n \n' +
+                'byline': ' Noaki Schwartz, PIO at (562) 833-5487',
+                'date': 'Sept. 18, 2015',
+                'body': '[YourCoast](http://yourcoast.org) is a free, online web app with all the valuable information from the California Coastal Commission\'s popular [California Coastal Access Guide](http://www.ucpress.edu/book.php?isbn=9780520278172) and [Experience the California Coast series](http://www.ucpress.edu/book.php?isbn=9780520258525). \n \n' +
 
                     'YourCoast is essential for anyone seeking to explore California\'s 1, 270mile-long shoreline via smart phone, tablet, or personal computer. The app contains information for 1,530 coastal accessways, displayed on colorful base maps, with details on the physical setting, facilities, and visitor activities - such as sandy beaches or tide pools, disabled facilities and wheelchair accessible trails, restrooms and parking, campgrounds, trails and visitor centers. \n \n' +
 
-                    'Plan your summer trip anywhere along the California coast by visiting the FREE YourCoast web app at [YourCoast.org](http://yourcoast.org).'
+                    'Plan your summer trip anywhere along the California coast by visiting the FREE YourCoast web app at [YourCoast.org](http://yourcoast.org).',
+                'preview': previewBuilder
             }
         ];
 
         $scope.editStory = function editStory(story) {
             $scope.editingStory = story;
+            // $scope.html = marked(story);
+        };
+
+        $scope.addNewStory = function addNewStory(story) {
+            $scope.stories.push(story);
+        }
+
+        $scope.baseStory = {
+            'headline': '',
+            'byline': '',
+            'type': '',
+            'date': '',
+            'body': '',
+            'preview': previewBuilder
         };
 
         $scope.pressTypes = [

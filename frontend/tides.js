@@ -29,20 +29,12 @@
         markedProvider.setOptions({
             gfm: true,
             tables: true
-            // ,
-            // highlight: function (code, lang) {
-            //     if (lang) {
-            //         return hljs.highlight(lang, code, true).value;
-            //     } else {
-            //         return hljs.highlightAuto(code).value;
-            //     }
-            // }
         });
     }])
 
 
-    .run(['$rootScope', '$location', '$cookies', '$cookieStore', 'toaster',
-    function($rootScope, $location, $cookies, $cookieStore, toaster){
+    .run(['$rootScope', '$location', '$cookies', '$cookieStore', 'toaster', '$log',  '$mdSidenav',
+    function($rootScope, $location, $cookies, $cookieStore, toaster, $log, $mdSidenav){
 
         $rootScope.authenticated = false;
         $rootScope.services = [];
@@ -78,5 +70,12 @@
 
             $location.path('/login');
         }
+
+        $rootScope.close = function () {
+          $mdSidenav('left').close()
+            .then(function () {
+              $log.debug("close LEFT is done");
+            });
+        };
     }]);
 })();

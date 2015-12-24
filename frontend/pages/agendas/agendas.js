@@ -45,9 +45,41 @@
 
         $scope.addCategory = function addCategory(parentIndex, index) {
             var newCategory = {
-                'items': [{}]
+                'items': []
             };
+
             $scope.newAgenda.hearingDays[parentIndex].cards[index].categories.push(newCategory);
+
+            console.log($scope.newAgenda);
+        }
+
+        $scope.addItem = function addItem(grandparentIndex, parentIndex, index) {
+            var newItem = {
+                'cdms_record_id': '',
+                'item_number': '',
+                'title_english': 'Application No. 5-15-1638 (Bolkin, Pacific Palisades)',
+                'title_spanish': '',
+                'description_english': 'Application of Bruce Bolkin to demolish 2 single-family homes and construct 7,715 sq.ft., 26 ft.-11 in. high, 2-story single-family home over basement level with attached garage, outdoor swimming pool and lot-tie at 301 & 321 Swarthmore Ave., Pacific Palisades, Los Angeles, Los Angeles County.',
+                'description_spanish': '',
+                'author': 'MA-LB',
+                'duration': '',
+                'staff_report_url': '',
+                'correspondence_url': '',
+                'ex_parte_url': '',
+                'addenda_url': '',
+                'last_edited_date': '',
+                'last_edited_user_id': '',
+                'hearing_date_id': '',
+                'district_id': '',
+                'category_id': '',
+                'result_id': ''
+            };
+
+            $scope.newAgenda
+            .hearingDays[grandparentIndex]
+            .cards[parentIndex]
+            .categories[index]
+            .items.push(newItem);
 
             console.log($scope.newAgenda);
         }

@@ -169,7 +169,7 @@
                     <div layout="row" ng-repeat="card in hearingDay.cards track by $index">
                         <md-card flex="80" flex-offset="10">
                             <md-card-header-text>
-                                <md-input-container class="mdc-text-blue-800" flex="50" flex-offset="25">
+                                <md-input-container class="mdc-text-blue-800" flex="90" flex-offset="5">
                                     <label class="mdc-text-grey-100">District</label>
                                     <md-select ng-model="newCard.district">
                                         <md-option ng-repeat="district in districts" value="{{ district.id }}" class="mdc-text-grey-800">{{ district.name_english }}</md-option>
@@ -187,23 +187,43 @@
                                             </md-select>
                                         </md-input-container>
 
+                                        <div layout="row" layout-align="space-around center">
+                                            <md-button flex="50" class="mdc-bg-blue-900 mdc-text-grey-100" ng-click="addItem($parent.$parent.$index, $parent.$index, $index)">
+                                                <md-icon class="md-icons mdc-text-grey-100">
+                                                    add
+                                                </md-icon>
+
+                                                Add an Item
+                                            </md-button>
+                                        </div>
+
+                                        <br><br>
+
                                         <ol>
                                             <li ng-repeat="item in category.items track by $index">
                                                 <md-input-container class="mdc-text-blue-800">
-                                                    <label class="mdc-text-blue-800">Item</label>
+                                                    <label class="mdc-text-blue-800">Title English</label>
 
-                                                    <input ng-model="newItem.item" type="text"  class="mdc-text-grey-100">
+                                                    <input ng-model="newItem.title_english" value="newItem.title_english" type="text"  class="mdc-text-grey-100">
                                                 </md-input-container>
 
-                                                <div>
-                                                    <md-button flex="50" class="mdc-bg-blue-900 mdc-text-grey-100" ng-click="addItem($parent.$index, $index)">
-                                                        <md-icon class="md-icons mdc-text-grey-100">
-                                                            add
-                                                        </md-icon>
+                                                <md-input-container class="mdc-text-blue-800">
+                                                    <label class="mdc-text-blue-800">Blur English</label>
 
-                                                        Add an Item
-                                                    </md-button>
-                                                </div>
+                                                    <input ng-model="newItem.description_english" value="newItem.description_english" type="text"  class="mdc-text-grey-100">
+                                                </md-input-container>
+
+                                                <md-input-container class="mdc-text-blue-800">
+                                                    <label class="mdc-text-blue-800">Title Spanish</label>
+
+                                                    <input ng-model="newItem.title_spanish" value="newItem.title_spanish" type="text"  class="mdc-text-grey-100">
+                                                </md-input-container>
+
+                                                <md-input-container class="mdc-text-blue-800">
+                                                    <label class="mdc-text-blue-800">Blur Spanish</label>
+
+                                                    <input ng-model="newItem.description_spanish" value="newItem.description_spanish" type="text"  class="mdc-text-grey-100">
+                                                </md-input-container>
                                             </li>
                                         </ol>
                                     </li>

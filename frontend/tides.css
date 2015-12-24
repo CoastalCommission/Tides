@@ -138,6 +138,10 @@ md-card {
     overflow-y: scroll;
 }
 
+md-list-item .md-list-item-inner > p {
+    line-height: 1.4em;
+}
+
 md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) {
     overflow-y: scroll;
     min-height: 85vh !important;
@@ -154,6 +158,28 @@ md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) {
 
 #login-form button.md-fab md-icon {
     color: #37474F;
+}
+
+#PressPiece {
+    font-family: Times New Roman, sans-serif;
+}
+
+#PressPiece blockquote p {
+    padding-left: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-left: 3px solid #e3e3e3;
+}
+
+/*hr + p:first-letter {
+    float: left;
+    font-size: 45px;
+    padding-right: 8px;
+}*/
+
+
+#PressPiece img {
+    width: 100%;
 }
 
 md-list-item.md-no-proxy,
@@ -183,6 +209,14 @@ md-list-item .md-no-style {
 
 .pull-up-60 {
     margin-top: -60px;
+}
+
+li md-input-container:first-of-type {
+    margin-top: -55px;
+}
+
+li ol li {
+    list-style-type: lower-alpha;
 }
 
 @-webkit-keyframes fadeInUp {
