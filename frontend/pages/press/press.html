@@ -1,26 +1,4 @@
 <md-content flex class="mdc-bg-blue-grey-200">
-    <md-toolbar>
-        <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="Settings" ng-click="close()">
-                <md-icon class="md-icons">
-                    menu
-                </md-icon>
-            </md-button>
-
-            <h2>
-                <span class="mdc-text-blue-grey-100">Press Pieces</span>
-            </h2>
-
-            <input ng-model="search" flex placeholder="search" class="mdc-text-grey-200">
-
-            <md-button class="md-icon-button" aria-label="More">
-                <md-icon class="md-icons">
-                    more_vert
-                </md-icon>
-            </md-button>
-        </div>
-    </md-toolbar>
-
     <div layout="row" class="md-padding">
         <div layout flex>
             <md-list flex>
@@ -46,7 +24,7 @@
             </md-list> <!-- end row -->
         </div>
 
-        <md-card layout="column" flex="65">
+        <md-card layout="column" flex="70">
             <md-card-content>
                 <md-tabs md-dynamic-height="false" md-stretch-tabs="always" md-border-bottom flex>
                     <md-tab label="Edit" md-selected="true">
@@ -156,5 +134,35 @@
                 </md-button>
             </md-card-actions>
         </md-card>
+
+        <md-fab-speed-dial md-open="isOpen" md-direction="up" ng-class="selectedMode" flex="5">
+            <md-fab-trigger>
+              <md-button aria-label="menu" class="md-fab md-cold">
+                  <md-icon class="mdc-text-blue-grey-800">
+                      add
+                  </md-icon>
+              </md-button>
+            </md-fab-trigger>
+
+            <md-fab-actions>
+                <md-button aria-label="Twitter" class="md-fab md-raised md-mini">
+                    <md-icon class="mdc-text-blue-600">
+                        twitter
+                    </md-icon>
+                </md-button>
+
+                <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+                    <md-icon class="mdc-text-blue-600">
+                        facebook
+                    </md-icon>
+                </md-button>
+
+                <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                    <md-icon class="mdc-text-blue-600">
+                        google_hangout
+                    </md-icon>
+                </md-button>
+            </md-fab-actions>
+        </md-fab-speed-dial>
     </div> <!-- end .md-padding -->
 </md-content>

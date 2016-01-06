@@ -1,25 +1,4 @@
     <md-content flex class="mdc-bg-blue-grey-200">
-        <md-toolbar>
-          <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="Settings">
-              <md-icon class="md-icons">
-                  menu
-              </md-icon>
-            </md-button>
-
-            <h2>
-              <span class="mdc-text-blue-grey-100">Agendas</span>
-            </h2>
-
-            <input ng-model="search" flex placeholder="search" class="mdc-text-grey-200">
-
-            <md-button class="md-icon-button" aria-label="More">
-              <md-icon class="md-icons">
-                  more_vert
-              </md-icon>
-            </md-button>
-          </div>
-        </md-toolbar>
 
         <div layout="row" class="md-padding">
             <div layout flex>
@@ -34,7 +13,7 @@
                 </md-list> <!-- end flex -->
             </div> <!-- end flex -->
 
-            <div layout="column" flex="75">
+            <div layout="column" flex="60">
                 <div layout="row" flex>
                     <md-card flex class="mdc-bg-blue-500" id="agenda-heading">
                         <md-card-content class="md-padding">
@@ -253,5 +232,49 @@
                     </div>
                 </div>
             </div>
+
+            <md-fab-speed-dial md-open="isOpen" md-direction="up" ng-class="selectedMode" flex="5" layout-align="center center">
+                <md-fab-trigger>
+                  <md-button aria-label="menu" class="md-fab">
+                      <md-icon class="mdc-text-blue-grey-800">
+                          add
+                      </md-icon>
+                  </md-button>
+                </md-fab-trigger>
+
+                <md-fab-actions>
+                    <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                        <md-tooltip md-direction="left" md-visible="tooltipVisible">Add Item</md-tooltip>
+
+                        <md-icon class="mdc-text-blue-600">
+                            short_text
+                        </md-icon>
+                    </md-button>
+
+                    <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">
+                        <md-tooltip md-direction="left" md-visible="tooltipVisible">Add Category</md-tooltip>
+
+                        <md-icon class="mdc-text-blue-600">
+                            view_list
+                        </md-icon>
+                    </md-button>
+
+                    <md-button aria-label="Facebook" class="md-fab md-raised md-mini">
+                        <md-tooltip md-direction="left" md-visible="tooltipVisible">Add District</md-tooltip>
+
+                        <md-icon class="mdc-text-blue-600">
+                            event_note
+                        </md-icon>
+                    </md-button>
+
+                    <md-button aria-label="Twitter" class="md-fab md-raised md-mini mdc-bg-blue-600">
+                        <md-tooltip md-direction="left" md-visible="tooltipVisible">Add Day</md-tooltip>
+
+                        <md-icon class="mdc-text-blue-600">
+                            today
+                        </md-icon>
+                    </md-button>
+                </md-fab-actions>
+            </md-fab-speed-dial>
         </div> <!-- end .md-padding -->
     </md-content>

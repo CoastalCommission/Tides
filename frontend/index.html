@@ -70,17 +70,25 @@
 			<!-- feedback -->
 		</toaster-container>
 
+		<md-toolbar class="animated fadeInDown" ng-show="authenticated">
+          <div class="md-toolbar-tools">
+            <md-button class="md-icon-button" aria-label="Settings">
+              <md-icon class="md-icons">
+                  menu
+              </md-icon>
+            </md-button>
+
+            <a href="#/dashboard" alt="Higs Field">
+                <img src="images/tides.png" class="animated fadeIn" flex="15" ng-cloak/>
+            </a>
+
+            <!-- <input ng-model="search" flex placeholder="search" class="mdc-text-grey-200" ng-cloak> -->
+          </div>
+        </md-toolbar>
+
         <div layout="row" flex>
             <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z4 mdc-bg-blue-grey-800 animated slideInLeft" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" ng-show="authenticated">
-                <header class="nav-header">
-                    <a href="#/dashboard" alt="Higs Field">
-						<img src="images/tides.png" class="animated fadeInDown"/>
-                    </a>
 
-					<!-- <p class="text-center mdc-text-blue-grey-600 no-margin animated fadeIn">
-						<small>presented by <strong><a href="http://thedisruptory.io" target="_blank" class="mdc-text-teal-A400">The Disruptory</a></strong></small>
-					</p> -->
-                </header>
 
 				<md-content layout-padding class="mdc-bg-blue-grey-800">
 					<!-- <h2 class="md-subhead no-margin text-center mdc-text-blue-grey-500">
@@ -88,17 +96,55 @@
 			        </h2> -->
 
 					<md-list>
+						<md-subheader class="md-no-sticky mdc-bg-blue-grey-800 mdc-text-blue-grey-200">Meetings</md-subheader>
+
 						<a href="#/agendas">
 							<md-list-item class="mdc-text-blue-grey-200">
 		                        <md-icon aria-label="Delete" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
-		                            gavel
+		                            assignment
 		                        </md-icon>
 
-								<p>Meeting Agendas</p>
+								<p>Agendas</p>
 							</md-list-item>
 
 							<md-divider></md-divider>
 						</a>
+
+						<!-- <a href="#/results">
+							<md-list-item class="mdc-text-blue-grey-200">
+		                        <md-icon aria-label="Delete" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+		                            assignment_turned_in
+		                        </md-icon>
+
+								<p>Results</p>
+							</md-list-item>
+
+							<md-divider></md-divider>
+						</a> -->
+
+						<a href="#/reports">
+							<md-list-item class="mdc-text-blue-grey-200">
+		                        <md-icon aria-label="Assignment" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+		                            description
+		                        </md-icon>
+
+								<p>Reports</p>
+							</md-list-item>
+
+							<!-- <md-divider></md-divider> -->
+						</a>
+
+						<!-- <a href="#/slides">
+							<md-list-item class="mdc-text-blue-grey-200">
+		                        <md-icon aria-label="Assignment" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+		                            slideshow
+		                        </md-icon>
+
+								<p>Slide Decks</p>
+							</md-list-item>
+						</a> -->
+
+						<md-subheader class="md-no-sticky mdc-bg-blue-grey-800 mdc-text-blue-grey-200">Communications</md-subheader>
 
 						<a href="#/press">
 							<md-list-item class="mdc-text-blue-grey-200">
@@ -108,9 +154,9 @@
 
 								<p>Press Pieces</p>
 							</md-list-item>
-
-							<md-divider></md-divider>
 						</a>
+
+						<md-subheader class="md-no-sticky mdc-bg-blue-grey-800 mdc-text-blue-grey-200">Mapping &amp; GIS</md-subheader>
 
 						<a href="#/cleanup">
 							<md-list-item class="mdc-text-blue-grey-200">
@@ -136,15 +182,39 @@
 
 						<md-divider></md-divider>
 
-						<a href="" class="mdc-text-blue-grey-200" ng-click="logout()">
-							<md-list-item>
-			                    <md-icon aria-label="Login" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
-			                        eject
-			                    </md-icon>
+						<!-- <md-subheader class="md-no-sticky mdc-bg-blue-grey-800 mdc-text-blue-grey-200">Management</md-subheader> -->
 
-								<p>
-			                    	Logout
-								</p>
+						<!-- <a href="#/access" class="mdc-text-blue-grey-200">
+							<md-list-item>
+		                        <md-icon aria-label="Beach Access" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+		                            face
+		                        </md-icon>
+
+		                        <p>Staff</p>
+							</md-list-item>
+						</a> -->
+
+						<!-- <md-divider></md-divider>
+
+						<a href="#/access" class="mdc-text-blue-grey-200">
+							<md-list-item>
+		                        <md-icon aria-label="Beach Access" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+		                            tune
+		                        </md-icon>
+
+		                        <p>Settings</p>
+							</md-list-item>
+						</a>
+
+						<md-divider></md-divider> -->
+
+						<a href="" ng-click="logout()" class="mdc-text-blue-grey-200">
+							<md-list-item>
+		                        <md-icon aria-label="Beach Access" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+		                            fingerprint
+		                        </md-icon>
+
+		                        <p>Log Out</p>
 							</md-list-item>
 						</a>
 					</md-list>
@@ -186,6 +256,25 @@
 				<script src="node_modules/highlight.js/lib/highlight.js"></script>
     			<script src="node_modules/angular-marked/dist/angular-marked.js"></script>
 
+				<!-- jquery -->
+				<script src="bower_components/jquery/dist/jquery.js"></script>
+
+				<!-- jquery file upload -->
+				<script src="bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
+				<script src="bower_components/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
+				<script src="bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
+				<!-- end jquery file upload related -->
+				<script src="bower_components/cloudinary_js/js/jquery.cloudinary.js"></script>
+
+				<!-- angular file upload shim -->
+				<script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.js"></script>
+
+				<!-- cloudinary angular -->
+				<script src="bower_components/cloudinary_ng/js/angular.cloudinary.js"></script>
+
+				<!-- angular file upload -->
+				<script src="node_modules/ng-file-upload/dist/ng-file-upload.js"></script>
+
           <!-- higs modules -->
             <!-- app -->
             <script src="tides.js"></script>
@@ -197,6 +286,8 @@
 			<script src="pages/login/login.js"></script>
             <script src="pages/dashboard/dashboard.js"></script>
 			<script src="pages/agendas/agendas.js"></script>
+			<script src="pages/reports/reports.js"></script>
+			<script src="pages/slides/slides.js"></script>
 			<script src="pages/press/press.js"></script>
 			<script src="pages/cleanup/cleanup.js"></script>
 			<script src="pages/access/access.js"></script>

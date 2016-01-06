@@ -1,0 +1,138 @@
+<md-content flex class="mdc-bg-blue-grey-200">
+    <div layout="row" class="md-padding">
+        <div layout flex>
+            <md-list flex>
+                <md-list-item ng-repeat="report in reports track by $index" ng-click="editReport(report)" class="mdc-text-blue-grey-800" flex>
+                    <md-icon class="md-icons">
+                        {{ report.icon }}
+                    </md-icon>
+
+                    <p>{{ report.title }}</p>
+
+                    <md-divider></md-divider>
+                </md-list-item>
+
+                <md-list-item ng-click="addNewReport(baseReport)" class="mdc-text-blue-grey-800" flex>
+                    <md-icon class="md-icons">
+                        add
+                    </md-icon>
+
+                    <p>Add New Report</p>
+
+                    <md-divider></md-divider>
+                </md-list-item>
+            </md-list> <!-- end row -->
+        </div>
+
+        <md-card layout="column" flex="65">
+            <md-card-content>
+                <md-tabs md-dynamic-height="false" md-stretch-tabs="always" md-border-bottom flex>
+                    <md-tab label="Edit" md-selected="true">
+                        <md-content class="md-padding">
+                            <form>
+                                <md-row flex layout="row">
+                                    <md-input-container flex="">
+                                        <label class="mdc-text-blue-800">Title</label>
+                                        <input ng-model="editingReport.title" flex/>
+                                    </md-input-container>
+                                </md-row>
+
+                                <md-row flex layout="row">
+                                    <md-input-container flex="">
+                                        <label class="mdc-text-blue-800">Byline</label>
+                                        <input ng-model="editingReport.byline" flex/>
+                                    </md-input-container>
+                                </md-row>
+
+                                <md-row flex layout="row">
+                                    <md-input-container flex>
+                                        <label class="mdc-text-blue-800">Publish Date</label>
+                                        <input ng-model="editingReport.date" flex/>
+                                    </md-input-container>
+
+                                    <md-input-container flex flex-offset="5">
+                                        <label class="mdc-text-blue-800">Coverage Type</label>
+                                        <md-select ng-model="editingStory.type">
+                                          <md-option value="format_quote">
+                                            Press Release
+                                          </md-option>
+
+                                          <md-option value="link">
+                                            3<sup>rd</sup> Party Article Syndication
+                                          </md-option>
+                                        </md-select>
+                                    </md-input-container>
+                                </md-row>
+
+                                <md-input-container class="md-block" ng-show="editingStory.type === 'format_quote'">
+                                    <label class="mdc-text-blue-800">Body</label>
+                                    <textarea ng-model="editingStory.body" columns="1" rows="5"></textarea>
+                                </md-input-container>
+
+                                <md-input-container class="md-block" ng-show="editingStory.type === 'link'">
+                                    <label>Source URL</label>
+                                    <input ng-model="editingStory.sourceURL" flex/>
+                                </md-input-container>
+
+                                <md-input-container class="md-block" ng-show="editingStory.type === 'link'">
+                                    <label>Image URL</label>
+                                    <input ng-model="editingStory.imageURL" flex/>
+                                </md-input-container>
+                            </form>
+                        </md-content>
+                    </md-tab>
+
+                    <md-tab label="Help">
+                        <md-content class="md-padding">
+                            <div marked src="'pages/press/help.md'" />
+                        </md-content>
+                    </md-tab>
+
+                    <md-tab label="Preview">
+                        <md-content class="md-padding" id="Report">
+                            <div marked="editingReport.preview()" />
+                        </md-content>
+                    </md-tab>
+
+                    <!-- <md-tab label="HTML">
+                        <md-content class="md-padding">
+                            <pre>
+                                {{ editStory.html }}
+                            </pre>
+                        </md-content>
+                    </md-tab> -->
+                </md-tabs>
+            </md-card-content>
+
+            <md-card-actions layout="row" layout-align="space-between center" class="mdc-bg-blue-900">
+                <md-button class="mdc-text-grey-100">
+                    <md-button class="md-icon-button" aria-label="Settings">
+                      <md-icon class="md-icons mdc-text-grey-100">
+                          delete
+                      </md-icon>
+                    </md-button>
+
+                    Delete
+                </md-button>
+
+                <md-button flex class="mdc-bg-blue-900 mdc-text-grey-100" ng-click="addHearingDay()">
+                    <md-icon class="md-icons mdc-text-grey-100">
+                        add
+                    </md-icon>
+
+                    Add a Hearing Day
+                </md-button>
+
+                <md-button class="mdc-text-grey-100"  ng-click="addNewAgenda()">
+                    <md-button class="md-icon-button" aria-label="Settings">
+                      <md-icon class="md-icons mdc-text-grey-100">
+                          save
+                      </md-icon>
+                    </md-button>
+
+                    Save
+                </md-button>
+            </md-card-actions>
+        </md-card>
+    </div> <!-- end .md-padding -->
+</md-content>

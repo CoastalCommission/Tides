@@ -3,11 +3,12 @@ html, body {
 }
 
 md-toolbar input {
-    background-color: rgba(255, 255, 255, 0.33);
+    background-color: rgba(255, 255, 255, 0.15);
     margin-left: 20px;
-    padding: 5px;
+    padding: 5px 20px;
     border-radius: 4px;
     border: none;
+    font-weight: 500;
 }
 
 .md-toolbar-tools h1 {
@@ -106,6 +107,10 @@ ul.lined-list li:last-of-type {
     text-align: center;
 }
 
+.text-right {
+    text-align: right;
+}
+
 .no-margin {
   margin: 0;
 }
@@ -160,7 +165,8 @@ md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) {
     color: #37474F;
 }
 
-#PressPiece {
+#PressPiece,
+#Report {
     font-family: Times New Roman, sans-serif;
 }
 
@@ -178,8 +184,24 @@ md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) {
 }*/
 
 
-#PressPiece img {
+#PressPiece p img,
+#Report p img {
     width: 100%;
+    padding: 0;
+}
+
+#Report #itemNumber {
+    padding: 0;
+    margin-top: 0;
+}
+
+#Report #itemNumber h1 {
+    font-size: 60px;
+    margin: 0;
+}
+
+#itemNumber + blockquote {
+    padding: 0;
 }
 
 md-list-item.md-no-proxy,
@@ -201,6 +223,7 @@ md-list-item .md-no-style {
 #login md-card {
     margin-top: -60px;
     z-index: 1;
+    overflow: visible;
 }
 
 #login .md-layout-row.layout-wrap {
@@ -217,6 +240,27 @@ li md-input-container:first-of-type {
 
 li ol li {
     list-style-type: lower-alpha;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.md-fab {
+    background-color: #00E4FE !important;
+}
+
+.md-fab md-icon {
+    color: #37474F !important;
+}
+
+.md-fab:hover,
+.md-fab.md-focused {
+  background-color: #00E4FE !important;
+}
+
+.md-subheader .md-subheader-content {
+    color: #01ABC2;
 }
 
 @-webkit-keyframes fadeInUp {

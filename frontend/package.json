@@ -21,6 +21,7 @@
     "animate.css": "^3.4.0",
     "highlight.js": "^9.0.0",
     "material-design-color-palette": "^1.1.0",
-    "material-design-lite": "^1.0.5"
+    "material-design-lite": "^1.0.5",
+    "ng-file-upload": "^10.1.14"
   }
 }

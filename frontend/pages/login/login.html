@@ -9,7 +9,7 @@
         <div flex="33" flex-offset="33">
             <md-card id="login-form" class="animated fadeInUp">
                 <md-card-content ng-show="!createAccount">
-                    <h2 class="text-center mdc-text-blue-grey-600 font-weight-300 no-margin">Login</h2>
+                    <h2 class="text-center mdc-text-blue-grey-600 font-weight-300 no-margin">Hello, Friend</h2>
 
                     <form>
                         <md-input-container>
@@ -30,16 +30,16 @@
                             </a>
                         </p>
 
-                        <md-button class="md-fab mdc-bg-cyan-A400 align-right" aria-label="Login" ng-click="authenticate()">
-                            <md-icon class="mdc-text-blue-grey-800">
-                                check
+                        <md-button class="md-fab align-right" aria-label="Login" ng-click="authenticate()">
+                            <md-icon>
+                                fingerprint
                             </md-icon>
                         </md-button>
                     </form>
                 </md-card-content>
 
                 <md-card-content ng-show="createAccount">
-                    <h2 class="text-center mdc-text-blue-grey-600 font-weight-300 no-margin">Create Account</h2>
+                    <h2 class="text-center mdc-text-blue-grey-600 font-weight-300 no-margin">Join the Party</h2>
 
                     <form>
                         <md-input-container>
@@ -68,7 +68,7 @@
 
                         <md-button class="md-fab mdc-bg-teal-A200 align-right" aria-label="Login" ng-click="addUser()">
                             <md-icon class="mdc-text-blue-grey-800">
-                                check
+                                fingerprint
                             </md-icon>
                         </md-button>
                     </form>

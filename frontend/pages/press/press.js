@@ -16,6 +16,8 @@
 
 
     .controller('PressController', ['$scope', '$rootScope', 'marked', function($scope, $rootScope, marked) {
+        $rootScope.pageName = "press pieces";
+
         var previewBuilder = function previewBuilder() {
             return  '![CCC Letterhead](/images/ccc-letterhead.png) \n \n' +
                         ' >> <h2 class="text-center">' + this.headline + '</h2> \n \n' +
@@ -105,5 +107,13 @@
                 'icon': 'format_quote'
             }
         ];
+
+        $scope.topDirections = ['left', 'up'];
+        $scope.bottomDirections = ['down', 'right'];
+        $scope.isOpen = false;
+        $scope.availableModes = ['md-fling', 'md-scale'];
+        $scope.selectedMode = 'md-fling';
+        $scope.availableDirections = ['up', 'down', 'left', 'right'];
+        $scope.selectedDirection = 'up';
     }]);
 })();

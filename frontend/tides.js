@@ -9,6 +9,8 @@
        'ngCookies',
        'ngMaterial',
        'hc.marked',
+       'cloudinary',
+       'ngFileUpload',
        'toaster',
 
        // services
@@ -19,6 +21,8 @@
        'tides.dashboard',
        'tides.add',
        'tides.agendas',
+       'tides.reports',
+       'tides.slides',
        'tides.press',
        'tides.cleanup',
        'tides.access'

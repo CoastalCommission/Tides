@@ -129,5 +129,25 @@
             };
 
         return agendas;
+    }])
+
+    .factory('CloudinaryAPI', ['$rootScope', '$resource', '$cookies', '$cookieStore',
+                        function($rootScope, $resource, $cookies, $cookieStore) {
+
+        var remoteBaseURL  = $.cloudinary.url('	https://api.cloudinary.com/v1_1/the-disruptory', {
+                                format: 'json',
+                                type: 'list'
+                            }),
+            photos   = {
+                getAll: $resource(remoteBaseURL, {}, {
+                    query: {
+                        method: 'GET',
+                        isArray: false,
+                        cache: true
+                    }
+                })
+            };
+
+        return photos;
     }]);
 })();
