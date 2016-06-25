@@ -15,7 +15,8 @@
     }])
 
 
-    .controller('AccessController', ['$scope', '$rootScope', 'AccessAPI', function($scope, $rootScope, AccessAPI) {
+    .controller('AccessController', ['$scope', '$rootScope', '$log', '$timeout', 'AccessAPI', 'uiGmapGoogleMapApi', function($scope, $rootScope, $log, $timeout, AccessAPI, uiGmapGoogleMapApi) {
+
         AccessAPI.getAll.query(function(promisedLocations) {
             $scope.locations = promisedLocations;
         });
@@ -109,7 +110,47 @@
                 location.BOATING = true;
             }
 
-            $scope.editingLocation = location;
+                $scope.editingLocation = location;
+
+                $scope.editingLocation.map = {
+                    center: {
+                        latitude: location.LATITUDE,
+                        longitude: location.LONGITUDE,
+                    },
+                    zoom: 12,
+                    marker: {
+                        coords: {
+                            latitude: location.LATITUDE,
+                            longitude: location.LONGITUDE,
+                        },
+                        options: {
+                            draggable: true,
+                            labelContent: "Drag &amp; Drop",
+                            labelAnchor: "35 70",
+                            labelClass: "marker-labels"
+                        },
+                        events: {
+                            dragend: function dragend(marker, eventName, args) {
+                                $scope.editingLocation.LATITUDE = marker.getPosition().lat();
+                                $scope.editingLocation.LONGITUDE = marker.getPosition().lng();
+
+                                // $scope.editingLocation.map.marker.options = {
+                                //     draggable: true
+                                //     // labelContent: "lat: " + $scope.editingLocation.LATITUDE + '<br>' + 'lon: ' + $scope.editingLocation.LONGITUDE,
+                                //     // labelAnchor: "80 90",
+                                //     // labelClass: "marker-labels"
+                                // };
+                            }
+                        }
+                    }
+                };
+
+                $scope.$watchCollection("editingLocation.map.marker.coords", function (newVal, oldVal) {
+                    if (_.isEqual(newVal, oldVal))
+                        return;
+                });
+
+            console.log($scope.editingLocation);
         };
 
         $scope.topDirections = ['left', 'up'];

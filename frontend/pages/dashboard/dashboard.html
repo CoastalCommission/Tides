@@ -1,29 +1,87 @@
-<md-content layout="column" flex class="md-padding mdc-bg-blue-grey-200">
+<md-content layout="column" flex class="md-padding mdc-bg-blue-grey-400">
     <div layout="row" layout-wrap>
-        <md-card ng-repeat="service in services | filter:searchQuery" flex="auto">
-            <md-card-content class="mdc-bg-{{ service.color }}-800">
-                <a ng-href="#/microservice/{{ service.id }}">
-                    <h1 class="mdc-text-{{ service.color }}-100 font-weight-300">{{ service.microserviceName }}</h1>
+        <md-card flex="auto">
+            <md-card-content class="mdc-bg-blue-grey-700">
+                <a ng-href="#/access">
+                    <h1 class="mdc-text-amber-100 text-center" ng-cloak>
+                        <md-icon aria-label="Beach Access" class="mdc-text-amber-300 material-icons">
+                            beach_access
+                        </md-icon>
+                        <br>
+                        {{ accessCount }} <span class="font-weight-300">Access Locations</span>
+                    </h1>
                 </a>
             </md-card-content>
-
-            <div class="mdc-bg-{{ service.color }}-100">
-                <md-card-actions layout="row" layout-align="space-between center">
-                    <md-button class="mdc-text-{{ service.color }}-900" flex="50">
-                        <md-icon aria-label="Power" class="text-center mdc-text-{{ service.color }}-900 material-icons">
-                            power
-                        </md-icon>
-                        {{ service.dbConnectionStatus || "Disconnected" }}
-                    </md-button>
-
-                    <md-button class="mdc-text-{{ service.color }}-900" flex="50">
-                        <md-icon aria-label="Network" class="text-center mdc-text-{{ service.color }}-900 material-icons">
-                            swap_horiz
-                        </md-icon>
-                        {{ service.endPointStatus || "Offline" }}
-                    </md-button>
-                </md-card-actions>
-            </div> <!-- end .mdc-text-{{ service.color }}-100 -->
         </md-card> <!-- end flex -->
+
+        <md-card flex="auto">
+            <md-card-content class="mdc-bg-blue-grey-700">
+                <a ng-href="#/cleanup">
+                    <h1 class="mdc-text-cyan-100 text-center" ng-cloak>
+                        <md-icon aria-label="Public" class="mdc-text-cyan-300 material-icons">
+                            public
+                        </md-icon>
+                        <br>
+                        {{ cleanupCount }} <span class="font-weight-300">Coastal Cleanup Day Locations</span>
+                    </h1>
+                </a>
+            </md-card-content>
+        </md-card> <!-- end flex -->
+
+        <md-card flex="auto">
+            <md-card-content class="mdc-bg-blue-grey-700">
+                <a ng-href="#/press">
+                    <h1 class="mdc-text-indigo-200 text-center">
+                        <md-icon aria-label="Format Quote" class="mdc-text-indigo-200 material-icons">
+                            format_quote
+                        </md-icon>
+                        <br>
+                        23 <span class="font-weight-300">Press Pieces</span>
+                    </h1>
+                </a>
+            </md-card-content>
+        </md-card> <!-- end flex -->
+
+        <md-card flex="auto">
+            <md-card-content class="mdc-bg-blue-grey-700">
+                <a ng-href="#/reports">
+                    <h1 class="mdc-text-red-100 text-center">
+                        <md-icon aria-label="Description" class="mdc-text-red-300 material-icons">
+                            description
+                        </md-icon>
+                        <br>
+                        15540 <span class="font-weight-300">Meeting Reports</span>
+                    </h1>
+                </a>
+            </md-card-content>
+        </md-card>
+
+        <md-card flex="auto">
+            <md-card-content class="mdc-bg-blue-grey-700">
+                <a ng-href="#/agendas">
+                    <h1 class="mdc-text-light-blue-100 text-center">
+                        <md-icon aria-label="Gavel" class="mdc-text-light-blue-300 material-icons">
+                            gavel
+                        </md-icon>
+                        <br>
+                        259 <span class="font-weight-300">Meeting Agendas</span>
+                    </h1>
+                </a>
+            </md-card-content>
+        </md-card>
+
+        <md-card flex="auto">
+            <md-card-content class="mdc-bg-blue-grey-700">
+                <a ng-href="#/friends">
+                    <h1 class="mdc-text-blue-grey-200 text-center">
+                        <md-icon aria-label="Friends" class="mdc-text-blue-grey-200 material-icons">
+                            face
+                        </md-icon>
+                        <br>
+                        <!-- {{ friendCount }} --> 16 <span class="font-weight-300">Friends</span>
+                    </h1>
+                </a>
+            </md-card-content>
+        </md-card>
     </div> <!-- end row -->
 </md-content>

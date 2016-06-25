@@ -4,6 +4,55 @@
     angular.module('tides.services', [])
 
 
+    .factory('ContentTypesAPI', ['$resource', function($resource) {
+        var contentTypes = [
+                'Press Pieces',
+                'Cleanup Day Locations',
+                'Access Locations',
+                'Friends'
+            ],
+            contentTypesAPI = {
+                getAll: function() {
+                    return contentTypes;
+                }
+            };
+
+        return contentTypesAPI;
+    }])
+
+
+    .factory('ColorsAPI', ['$resource', function($resource) {
+        var colors = [
+                'red',
+                'pink',
+                'purple',
+                'deep-purple',
+                'indigo',
+                'blue',
+                'light-blue',
+                'cyan',
+                'teal',
+                'green',
+                'light-green',
+                'lime',
+                'yellow',
+                'amber',
+                'orange',
+                'deep-orange',
+                'brown',
+                'grey',
+                'blue-grey'
+            ],
+            colorsAPI = {
+                getAll: function() {
+                    return colors;
+                }
+            };
+
+        return colorsAPI;
+    }])
+
+
     .factory('AuthenticationAPI', ['$resource', function($resource) {
         var authenticationAPI = {
                 authenticate: $resource('http://localhost:3040/login', {}, {
@@ -25,6 +74,21 @@
             };
 
         return authenticationAPI;
+    }])
+
+
+    .factory('FriendsAPI', ['$resource', function($resource) {
+        var friendsAPI = {
+                getAll: $resource('http://localhost:3040/get/users', {}, {
+                    query: {
+                        method: 'GET',
+                        isArray: true,
+                        cache: true
+                    }
+                })
+            };
+
+        return friendsAPI;
     }])
 
 
@@ -68,11 +132,11 @@
                     function($rootScope, $resource, $cookies, $cookieStore) {
 
         var agendas   = {
-                getAllAgendas: $resource('http://localhost:3040/get/agendas', {}, {
+                getAllAgendas: $resource('pages/agendas/agendas.json', {}, {
                     query: {
                         method: 'GET',
-                        isArray: true,
-                        cache: true
+                        isArray: true
+                        // cache: true
                     }
                 }),
                 getAllMonths: $resource('http://localhost:3040/get/months', {}, {
@@ -117,7 +181,6 @@
                         cache: true
                     }
                 }),
-
                 addNewAgenda: $resource('http://localhost:3040/add/agendas', {}, {
                     query: {
                         method: 'POST',
@@ -129,25 +192,5 @@
             };
 
         return agendas;
-    }])
-
-    .factory('CloudinaryAPI', ['$rootScope', '$resource', '$cookies', '$cookieStore',
-                        function($rootScope, $resource, $cookies, $cookieStore) {
-
-        var remoteBaseURL  = $.cloudinary.url('	https://api.cloudinary.com/v1_1/the-disruptory', {
-                                format: 'json',
-                                type: 'list'
-                            }),
-            photos   = {
-                getAll: $resource(remoteBaseURL, {}, {
-                    query: {
-                        method: 'GET',
-                        isArray: false,
-                        cache: true
-                    }
-                })
-            };
-
-        return photos;
     }]);
 })();

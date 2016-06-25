@@ -7,7 +7,7 @@
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/agendas', {
             templateUrl: 'pages/agendas/agendas.html',
-            controller: 'AgendasController',
+            // controller: 'AgendasController',
             access: {
                 requiresLogin: true
             }
@@ -16,29 +16,33 @@
 
 
     .controller('AgendasController', ['$scope', '$rootScope', 'AgendasAPI', function($scope, $rootScope, AgendasAPI) {
+        $scope.editingAgenda = null;
+        $scope.editingDistrict = null;
+        $scope.editingCategory = null;
+        $scope.editingItem = null;
         $scope.newAgenda = {
             'hearingDays': []
         };
 
-        // $scope.addNewAgenda = function addNewAgenda() {
-        //     var agenda = new AgendasAPI.addNewAgenda($scope.newAgenda);
-        //     agenda.$save();
-        // };
+        $scope.saveNewAgenda = function saveNewAgenda() {
+            var agenda = new AgendasAPI.addNewAgenda($scope.newAgenda);
+            agenda.$save();
+        };
 
         $scope.addHearingDay = function addHearingDay() {
             var newDay = {
-                'cards': []
+                'districts': []
             };
             $scope.newAgenda.hearingDays.push(newDay);
 
             console.log($scope.newAgenda);
         };
 
-        $scope.addCard = function addCard(index) {
-            var newCard = {
+        $scope.addDistrict = function addDistrict(index) {
+            var newDistrict = {
                 'categories': []
             };
-            $scope.newAgenda.hearingDays[index].cards.push(newCard);
+            $scope.newAgenda.hearingDays[index].districts.push(newDistrict);
 
             console.log($scope.newAgenda);
         };
@@ -48,7 +52,7 @@
                 'items': []
             };
 
-            $scope.newAgenda.hearingDays[parentIndex].cards[index].categories.push(newCategory);
+            $scope.newAgenda.hearingDays[parentIndex].districts[index].categories.push(newCategory);
 
             console.log($scope.newAgenda);
         }
@@ -77,12 +81,98 @@
 
             $scope.newAgenda
             .hearingDays[grandparentIndex]
-            .cards[parentIndex]
+            .districts[parentIndex]
             .categories[index]
             .items.push(newItem);
 
             console.log($scope.newAgenda);
         }
+
+
+        $scope.editAgenda = function editAgenda(agenda) {
+            $scope.editingAgenda = agenda;
+            $scope.editingDistrict = null;
+            $scope.editingCategory = null;
+            $scope.editingItem = null;
+        };
+
+        $scope.editDistrict = function editDistrict(district) {
+            $scope.editingAgenda = null;
+            $scope.editingDistrict = district;
+            $scope.editingCategory = null;
+            $scope.editingItem = null;
+        };
+
+        $scope.editCategory = function editCategory(category) {
+            $scope.editingAgenda = null;
+            $scope.editingDistrict = null;
+            $scope.editingCategory = category;
+            $scope.editingItem = null;
+        };
+
+        $scope.editItem = function editItem(item) {
+            $scope.editingAgenda = null;
+            $scope.editingDistrict = null;
+            $scope.editingCategory = null;
+            $scope.editingItem = item;
+        };
+
+
+        $scope.toggleControls = function toggleControls(district) {
+            district.viewControls = !district.viewControls;
+        };
+
+        $scope.toggleItemControls = function toggleItemControls(item) {
+            item.viewControls = !item.viewControls;
+        };
+
+        $scope.toggleCategoryControls = function toggleCategoryControls(category) {
+            category.viewControls = !category.viewControls;
+        };
+
+        $scope.backToAgenda = function backToAgenda(district) {
+            console.log(district.$parent);
+            district = null;
+            // editingAgenda = district.$parent;
+        };
+
+        $scope.totalItemsInDistrict = function totalItemsInDistrict(district) {
+            var total = 0;
+
+            angular.forEach(district.categories, function(key, value) {
+                angular.forEach(key.items, function(key,value) {
+                    total++;
+                });
+            });
+
+            return Number(total);
+        };
+
+        $scope.totalTimeForDay = function totalTimeForDay(day) {
+            var total = 0;
+
+            angular.forEach(day.districts, function(key, value) {
+                angular.forEach(key.categories, function(key,value) {
+                    angular.forEach(key.items, function(key,value) {
+                        total += key.timeEst;
+                    });
+                });
+            });
+
+            return Number(total);
+        };
+
+        $scope.totalTimeForDistrict = function totalTimeForDistrict(district) {
+            var total = 0;
+
+            angular.forEach(district.categories, function(key, value) {
+                angular.forEach(key.items, function(key,value) {
+                    total += key.timeEst;
+                });
+            });
+
+            return Number(total);
+        };
 
         AgendasAPI.getAllAgendas.query(function(promisedAgendas) {
             $scope.agendas = promisedAgendas;
@@ -103,5 +193,122 @@
         AgendasAPI.getAllCategories.query(function(promisedCategories) {
             $scope.categories = promisedCategories;
         });
-    }]);
+    }])
+
+
+    .controller('agendaController', ['AgendasAPI', function(AgendasAPI) {
+        var self = this;
+        self.editingAgenda = null;
+
+        self.editAgenda = function editAgenda(agenda) {
+            self.editingAgenda = agenda;
+            self.editingDistrict = null;
+            self.editingCategory = null;
+            self.editingItem = null;
+        };
+
+        self.editDistrict = function editDistrict(district) {
+            self.editingAgenda = null;
+            self.editingDistrict = district;
+            self.editingCategory = null;
+            self.editingItem = null;
+        };
+
+        self.toggleControls = function toggleControls(district) {
+            district.viewControls = !district.viewControls;
+        };
+
+        self.totalItemsInDistrict = function totalItemsInDistrict(district) {
+            var total = 0;
+
+            angular.forEach(district.categories, function(key, value) {
+                angular.forEach(key.items, function(key,value) {
+                    total++;
+                });
+            });
+
+            return Number(total);
+        };
+
+        self.totalTimeForDay = function totalTimeForDay(day) {
+            var total = 0;
+
+            angular.forEach(day.districts, function(key, value) {
+                angular.forEach(key.categories, function(key,value) {
+                    angular.forEach(key.items, function(key,value) {
+                        total += key.timeEst;
+                    });
+                });
+            });
+
+            return Number(total);
+        };
+
+        self.totalTimeForDistrict = function totalTimeForDistrict(district) {
+            var total = 0;
+
+            angular.forEach(district.categories, function(key, value) {
+                angular.forEach(key.items, function(key,value) {
+                    total += key.timeEst;
+                });
+            });
+
+            return Number(total);
+        };
+
+        AgendasAPI.getAllAgendas.query(function(promisedAgendas) {
+            self.agendas = promisedAgendas;
+        });
+    }])
+
+    .controller('districtController', [function() {
+        var self = this;
+        self.editingDistrict = null;
+
+        self.editCategory = function editCategory(category) {
+            self.editingAgenda = null;
+            self.editingDistrict = null;
+            self.editingCategory = category;
+            self.editingItem = null;
+
+            console.log($parent.editingCategory);
+        };
+
+        self.toggleCategoryControls = function toggleCategoryControls(category) {
+            category.viewControls = !category.viewControls;
+        };
+
+    }])
+
+    .controller('categoryController', [function() {
+        var self = this;
+        self.editingCategory = null;
+
+        self.editItem = function editItem(item) {
+            self.editingAgenda = null;
+            self.editingDistrict = null;
+            self.editingCategory = null;
+            self.editingItem = item;
+        };
+
+        self.toggleItemControls = function toggleItemControls(item) {
+            item.viewControls = !item.viewControls;
+        };
+
+    }])
+
+    .controller('editItemController', editItemController);
+
+
+    function editCategoryController() {
+        var self = this;
+
+        self.editingCategory = null;
+    }
+
+    function editItemController() {
+        var self = this;
+
+        self.editingItem = null;
+    }
 })();

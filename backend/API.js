@@ -66,9 +66,11 @@
                 logger.info(err);
             } else if(rows === undefined) {
                 tidesDB.run('CREATE TABLE "users_tbl" ' +
-                            '("id"      INTEGER PRIMARY KEY AUTOINCREMENT, ' +
-                            '"username" VARCHAR(255), ' +
-                            '"password" VARCHAR(255))',
+                            '("id"       INTEGER PRIMARY KEY AUTOINCREMENT, ' +
+                            '"username"  VARCHAR(255), ' +
+                            '"password"  VARCHAR(255), ' +
+                            '"canAccess" VARCHAR(255), ' +
+                            '"color"     VARCHAR(255))',
                             function(err) {
                                 if(err !== null) {
                                     logger.error(err);
@@ -226,6 +228,33 @@
         })
 
 
+        .get('/bootstrap', function(req, res, next) {
+            tidesDB.beginTransaction(function(err, trans) {
+                trans.run("INSERT INTO 'users_tbl' (username," +
+                                                   "password) " +
+                          "VALUES('zach', " +
+                                 "'IMustNotTellLies')");
+
+                trans.run("INSERT INTO 'users_tbl' (username," +
+                                                   "password) " +
+                           "VALUES('afrankel', " +
+                                  "'publiceducation')");
+
+                trans.commit(function(err) {
+                    if(err) {
+                        logger.error('/bootstrap', err);
+                    } else {
+                        logger.info('/bootstrap');
+                        res.send({
+                            'added': true,
+                            'feedback': 'DB has been bootstrapped'
+                        });
+                    }
+                });
+            });
+        })
+
+
         .post('/login', function(req, res, next) {
             var sql = 'SELECT * ' +
                       'FROM users_tbl ' +
@@ -280,6 +309,21 @@
                         });
                     }
                 });
+            });
+        })
+
+
+        .get('/get/users', function (req, res, next) {
+            var sql = 'SELECT * ' +
+                      'FROM users_tbl';
+
+            tidesDB.all(sql, function(err, resultSetData) {
+                if(err !== null) {
+                    logger.error('/get/users', err);
+                } else {
+                    logger.info('/get/users');
+                    res.send(resultSetData);
+                }
             });
         })
 

@@ -1,0 +1,95 @@
+<md-content layout="column" flex class="md-padding mdc-bg-blue-grey-200">
+    <div layout="row">
+        <div layout="column" flex="30">
+            <div class="mdc-text-blue-grey-800" flex="100" layout="row" layout-align="center center">
+                <md-input-container class="md-icon-float md-block" flex="100">
+                    <label>Search</label>
+                    <md-icon >
+                        search
+                    </md-icon>
+                    <input ng-model="search" type="search">
+                </md-input-container>
+            </div>
+
+            <md-list>
+                <md-list-item ng-repeat="friend in friends | filter:search" ng-click="editFriend(friend)" class="mdc-text-blue-grey-800">
+                    <p>{{ friend.username }}</p>
+
+                    <md-divider></md-divider>
+                </md-list-item>
+            </md-list> <!-- end row -->
+
+            <div class="mdc-text-blue-grey-800" flex="100" layout="row" layout-align="center center">
+                <md-button class="md-raised mdc-bg-cyan-300" flex="90">
+                    <md-icon >
+                        add
+                    </md-icon>
+                     New Friend
+                 </md-button>
+            </div>
+        </div>
+
+        <md-card layout="column" flex="70">
+            <md-card-title class="mdc-bg-blue-grey-600 md-padding">
+                <md-card-title-text>
+                    <md-input-container class="mdc-text-grey-200" flex="50" flex-offset="25">
+                        <label class="mdc-text-grey-200">Username</label>
+                        <input ng-model="editingFriend.username" class="text-center mdc-text-grey-200">
+                    </md-input-container>
+
+                    <div layout="row" flex layout-wrap>
+                        <md-input-container class="mdc-text-grey-200" flex="20" flex-offset="25">
+                            <label class="mdc-text-grey-200">Password</label>
+                            <input ng-model="editingFriend.password" class="text-center mdc-text-grey-200" type="password">
+                        </md-input-container>
+
+                        <md-input-container class="mdc-text-grey-200" flex="20" flex-offset="10">
+                            <label class="mdc-text-grey-200">Confirm Password</label>
+                            <input ng-model="editingFriend.password" class="text-center mdc-text-grey-200" type="password">
+                        </md-input-container>
+                    </div> <!-- end row -->
+                </md-card-title-text>
+            </md-card-title>
+
+            <md-card-content layout="row">
+                <div flex="50" layout-align="start center">
+                    <div layout="row" layout-wrap>
+                        <div flex="50" ng-repeat="contentType in contentTypes">
+                            <md-switch ng-model="editingFriend.contentType">
+                                {{ contentType }}
+                            </md-switch>
+                        </div>
+                    </div> <!-- end row -->
+                </div> <!-- end flex 50 -->
+
+                <div layout flex="50" layout-align="start start">
+                    <div layout="row" flex layout-wrap>
+                        <md-input-container class="mdc-text-grey-100" flex="50" flex-offset="25">
+                            <label class="mdc-text-grey-800">Color</label>
+                            <md-select ng-model="editingFriend.color">
+                                <md-option ng-repeat="color in colors" value="{{ color }}" class="mdc-text-grey-800">{{ color }}</md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div> <!-- end row -->
+                </div> <!-- end flex 50 -->
+            </md-card-content>
+
+            <md-card-actions layout="row" layout-align="space-between center" class="mdc-bg-blue-grey-800">
+                <md-button class="mdc-text-cyan-300">
+                    <md-icon class="mdc-text-cyan-300">
+                        delete
+                    </md-icon>
+
+                    Delete
+                </md-button>
+                <md-button class="mdc-text-cyan-300">
+                    <md-icon class="mdc-text-cyan-300">
+                        save
+                    </md-icon>
+
+                    Save
+                </md-button>
+            </md-card-actions>
+        </md-card>
+    </div> <!-- end row -->
+</md-content>

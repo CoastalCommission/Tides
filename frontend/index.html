@@ -33,7 +33,7 @@
 
 		<!-- css -->
 			<!-- typefaces -->
-			<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700|Roboto:500,900,400italic,100,300,700,500italic,100italic,300italic,400' rel='stylesheet' type='text/css'>
+			<link href='http://fonts.googleapis.com/css?family=Roboto:500,900,400italic,100,300,700,500italic,100italic,300italic,400' rel='stylesheet' type='text/css'>
 			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 			<!-- angular material -->
@@ -78,11 +78,55 @@
               </md-icon>
             </md-button>
 
-            <a href="#/dashboard" alt="Higs Field">
+            <a href="#/dashboard" alt="Tides">
                 <img src="images/tides.png" class="animated fadeIn" flex="15" ng-cloak/>
             </a>
 
-            <!-- <input ng-model="search" flex placeholder="search" class="mdc-text-grey-200" ng-cloak> -->
+			<span flex></span>
+
+			<!-- <md-button>
+			  {{ username }}
+            </md-button> -->
+
+			<md-menu md-position-mode="target-right target" md-offset="0 75">
+				<md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+					<md-icon class="md-icons" aria-label="Admin">
+						more_vert
+					</md-icon>
+	            </md-button>
+
+				<md-menu-content width="2">
+					<md-menu-item>
+						<md-button ng-click="">
+							<div layout="row" flex>
+								<md-icon class="md-icons" aria-label="Settings" md-menu-align-target>
+									settings
+								</md-icon>
+
+								<p flex>Settings</p>
+							</div>
+						</md-button>
+					</md-menu-item>
+
+					<md-menu-item>
+						<md-button ng-href="#/friends">
+							<div layout="row" flex>
+								<md-icon class="md-icons" aria-label="Friends" md-menu-align-target>
+									face
+								</md-icon>
+
+								<p flex>Friends</p>
+							</div>
+						</md-button>
+					</md-menu-item>
+				</md-menu-content>
+			</md-menu>
+
+			<md-button ng-click="logout()" class="md-icon-button">
+				<md-icon class="md-icons" aria-label="Exit">
+					exit_to_app
+				</md-icon>
+            </md-button>
           </div>
         </md-toolbar>
 
@@ -91,84 +135,8 @@
 
 
 				<md-content layout-padding class="mdc-bg-blue-grey-800">
-					<!-- <h2 class="md-subhead no-margin text-center mdc-text-blue-grey-500">
-			            Microservices
-			        </h2> -->
-
 					<md-list>
-						<md-subheader class="md-no-sticky mdc-bg-blue-grey-800 mdc-text-blue-grey-200">Meetings</md-subheader>
-
-						<a href="#/agendas">
-							<md-list-item class="mdc-text-blue-grey-200">
-		                        <md-icon aria-label="Delete" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
-		                            assignment
-		                        </md-icon>
-
-								<p>Agendas</p>
-							</md-list-item>
-
-							<md-divider></md-divider>
-						</a>
-
-						<!-- <a href="#/results">
-							<md-list-item class="mdc-text-blue-grey-200">
-		                        <md-icon aria-label="Delete" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
-		                            assignment_turned_in
-		                        </md-icon>
-
-								<p>Results</p>
-							</md-list-item>
-
-							<md-divider></md-divider>
-						</a> -->
-
-						<a href="#/reports">
-							<md-list-item class="mdc-text-blue-grey-200">
-		                        <md-icon aria-label="Assignment" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
-		                            description
-		                        </md-icon>
-
-								<p>Reports</p>
-							</md-list-item>
-
-							<!-- <md-divider></md-divider> -->
-						</a>
-
-						<!-- <a href="#/slides">
-							<md-list-item class="mdc-text-blue-grey-200">
-		                        <md-icon aria-label="Assignment" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
-		                            slideshow
-		                        </md-icon>
-
-								<p>Slide Decks</p>
-							</md-list-item>
-						</a> -->
-
-						<md-subheader class="md-no-sticky mdc-bg-blue-grey-800 mdc-text-blue-grey-200">Communications</md-subheader>
-
-						<a href="#/press">
-							<md-list-item class="mdc-text-blue-grey-200">
-		                        <md-icon aria-label="Delete" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
-		                            format_quote
-		                        </md-icon>
-
-								<p>Press Pieces</p>
-							</md-list-item>
-						</a>
-
-						<md-subheader class="md-no-sticky mdc-bg-blue-grey-800 mdc-text-blue-grey-200">Mapping &amp; GIS</md-subheader>
-
-						<a href="#/cleanup">
-							<md-list-item class="mdc-text-blue-grey-200">
-		                        <md-icon aria-label="Delete" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
-		                            public
-		                        </md-icon>
-
-								<p>Cleanup Day Locations</p>
-							</md-list-item>
-
-							<md-divider></md-divider>
-						</a>
+						<md-subheader class="md-no-sticky mdc-bg-blue-grey-800">Mapping &amp; GIS</md-subheader>
 
 						<a href="#/access" class="mdc-text-blue-grey-200">
 							<md-list-item>
@@ -180,43 +148,69 @@
 							</md-list-item>
 						</a>
 
-						<md-divider></md-divider>
-
-						<!-- <md-subheader class="md-no-sticky mdc-bg-blue-grey-800 mdc-text-blue-grey-200">Management</md-subheader> -->
-
-						<!-- <a href="#/access" class="mdc-text-blue-grey-200">
-							<md-list-item>
-		                        <md-icon aria-label="Beach Access" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
-		                            face
+						<a href="#/cleanup">
+							<md-list-item class="mdc-text-blue-grey-200">
+		                        <md-icon aria-label="Delete" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+		                            public
 		                        </md-icon>
 
-		                        <p>Staff</p>
+								<p>Cleanup Day Locations</p>
+							</md-list-item>
+						</a>
+
+						<md-subheader class="md-no-sticky mdc-bg-blue-grey-800">Communications</md-subheader>
+
+						<a href="#/press">
+							<md-list-item class="mdc-text-blue-grey-200">
+		                        <md-icon aria-label="Delete" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
+		                            format_quote
+		                        </md-icon>
+
+								<p>Press Pieces</p>
+							</md-list-item>
+						</a>
+
+						<md-subheader class="md-no-sticky mdc-bg-blue-grey-800">Meetings</md-subheader>
+
+						<a href="#/agendas">
+							<md-list-item class="mdc-text-blue-grey-200">
+		                        <md-icon aria-label="Gavel" class="material-icons md-avatar-icon">
+		                            gavel
+		                        </md-icon>
+
+								<p>Agendas</p>
+							</md-list-item>
+						</a>
+
+						<a href="#/reports">
+							<md-list-item class="mdc-text-blue-grey-200">
+		                        <md-icon aria-label="Assignment" class="material-icons md-avatar-icon">
+		                            description
+		                        </md-icon>
+
+								<p>Reports</p>
+							</md-list-item>
+						</a>
+
+						<a href="#/results">
+							<md-list-item class="mdc-text-grey-600">
+		                        <md-icon aria-label="Delete" class="material-icons md-avatar-icon">
+		                            assignment_turned_in
+		                        </md-icon>
+
+								<p>Results</p>
+							</md-list-item>
+						</a>
+
+						<!-- <a href="#/slides">
+							<md-list-item class="mdc-text-blue-grey-500">
+		                        <md-icon aria-label="Assignment" class="material-icons md-avatar-icon">
+		                            slideshow
+		                        </md-icon>
+
+								<p>Slide Decks</p>
 							</md-list-item>
 						</a> -->
-
-						<!-- <md-divider></md-divider>
-
-						<a href="#/access" class="mdc-text-blue-grey-200">
-							<md-list-item>
-		                        <md-icon aria-label="Beach Access" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
-		                            tune
-		                        </md-icon>
-
-		                        <p>Settings</p>
-							</md-list-item>
-						</a>
-
-						<md-divider></md-divider> -->
-
-						<a href="" ng-click="logout()" class="mdc-text-blue-grey-200">
-							<md-list-item>
-		                        <md-icon aria-label="Beach Access" class="mdc-text-blue-grey-200 material-icons md-avatar-icon">
-		                            fingerprint
-		                        </md-icon>
-
-		                        <p>Log Out</p>
-							</md-list-item>
-						</a>
 					</md-list>
 				</md-content>
             </md-sidenav>
@@ -256,26 +250,15 @@
 				<script src="node_modules/highlight.js/lib/highlight.js"></script>
     			<script src="node_modules/angular-marked/dist/angular-marked.js"></script>
 
-				<!-- jquery -->
-				<script src="bower_components/jquery/dist/jquery.js"></script>
+				<!-- angular google maps -->
+				<script src="node_modules/angular-google-maps/node_modules/lodash/lodash.js"></script>
+				<script src="node_modules/angular-google-maps/node_modules/angular-simple-logger/dist/angular-simple-logger.js"></script>
+				<script src="node_modules/angular-google-maps/dist/angular-google-maps.js"></script>
 
-				<!-- jquery file upload -->
-				<script src="bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js"></script>
-				<script src="bower_components/blueimp-file-upload/js/jquery.iframe-transport.js"></script>
-				<script src="bower_components/blueimp-file-upload/js/jquery.fileupload.js"></script>
-				<!-- end jquery file upload related -->
-				<script src="bower_components/cloudinary_js/js/jquery.cloudinary.js"></script>
+				<!-- angular-drag-and-drop-list -->
+				<script src="node_modules/angular-drag-and-drop-lists/angular-drag-and-drop-lists.js"></script>
 
-				<!-- angular file upload shim -->
-				<script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.js"></script>
-
-				<!-- cloudinary angular -->
-				<script src="bower_components/cloudinary_ng/js/angular.cloudinary.js"></script>
-
-				<!-- angular file upload -->
-				<script src="node_modules/ng-file-upload/dist/ng-file-upload.js"></script>
-
-          <!-- higs modules -->
+          <!-- tides modules -->
             <!-- app -->
             <script src="tides.js"></script>
 
@@ -291,7 +274,7 @@
 			<script src="pages/press/press.js"></script>
 			<script src="pages/cleanup/cleanup.js"></script>
 			<script src="pages/access/access.js"></script>
-			<script src="pages/add/add.js"></script>
+			<script src="pages/friends/friends.js"></script>
 
     			<!-- elements -->
     </body>

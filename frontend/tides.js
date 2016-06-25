@@ -9,8 +9,8 @@
        'ngCookies',
        'ngMaterial',
        'hc.marked',
-       'cloudinary',
-       'ngFileUpload',
+       'uiGmapgoogle-maps',
+       'dndLists',
        'toaster',
 
        // services
@@ -19,7 +19,7 @@
        // pages
        'tides.login',
        'tides.dashboard',
-       'tides.add',
+       'tides.friends',
        'tides.agendas',
        'tides.reports',
        'tides.slides',
@@ -33,6 +33,14 @@
         markedProvider.setOptions({
             gfm: true,
             tables: true
+        });
+    }])
+
+    .config(['uiGmapGoogleMapApiProvider', function(uiGmapGoogleMapApiProvider) {
+        uiGmapGoogleMapApiProvider.configure({
+            key: 'AIzaSyDU97BUZsIGAOpbOU6al0SN76Qq6U_ujzk',
+            v: '3.17',
+            libraries: 'weather,geometry,places'
         });
     }])
 
@@ -55,6 +63,8 @@
 
             if($cookieStore.get('authentication') !== undefined) {
                 $rootScope.authenticated = $cookieStore.get('authentication').authenticated;
+                $rootScope.username      = $cookieStore.get('authentication').username;
+                console.log($rootScope.username);
             } else {
                 $rootScope.authenticated = false;
             }
@@ -68,7 +78,7 @@
             toaster.pop({
                 type: 'success',
                 title: 'Thanks!',
-                body: 'Peace Out ' + $rootScope.authenticated + ' ' +  $rootScope.services,
+                body: 'Peace Out',
                 showCloseButton: true
             });
 
@@ -81,5 +91,21 @@
               $log.debug("close LEFT is done");
             });
         };
+
+        // lodash alias fix
+        // https://github.com/angular-ui/angular-google-maps/issues/1682
+        if (typeof _.contains === 'undefined') {
+            _.contains = _.includes;
+            _.prototype.contains = _.includes;
+        }
+        if (typeof _.object === 'undefined') {
+            _.object = _.zipObject;
+        }
+        if (typeof _.all === 'undefined') {
+            _.all = _.every;
+        }
+        if (typeof _.any === 'undefined') {
+            _.any = _.some;
+        }
     }]);
 })();
