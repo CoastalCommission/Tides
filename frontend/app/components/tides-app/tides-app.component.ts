@@ -4,7 +4,7 @@ import { RouteConfig,
          ROUTER_PROVIDERS }    from 'angular2/router';
 
 import { DashboardComponent }  from '../dashboard/dashboard.component';
-import { HeroesComponent }     from '../../heroes.component';
+import { HeroesComponent }     from '../heroes/heroes.component';
 import { HeroDetailComponent } from '../../hero-detail.component';
 import { HeroService }         from '../../hero.service';
 
