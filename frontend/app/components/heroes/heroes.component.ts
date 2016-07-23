@@ -3,7 +3,7 @@ import { Component,
 import { Router }              from 'angular2/router';
 
 import { Hero }                from '../hero/hero';
-import { HeroDetailComponent } from '../../hero-detail.component';
+import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 import { HeroService }         from '../../hero.service';
 
 @Component({
