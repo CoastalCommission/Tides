@@ -2,9 +2,9 @@ import { Component,
          OnInit }              from 'angular2/core';
 import { Router }              from 'angular2/router';
 
-import { Hero }                from '../hero/hero';
-import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
+import { Hero }                from '../../services/hero/type/hero.type';
 import { HeroService }         from '../../services/hero/hero.service';
+import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
 
 @Component({
     selector: 'my-heroes',

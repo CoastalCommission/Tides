@@ -3,7 +3,7 @@ import { Component,
          OnInit }      from 'angular2/core';
 import { RouteParams } from 'angular2/router';
 
-import { Hero }        from '../hero/hero';
+import { Hero }        from '../../services/hero/type/hero.type';
 import { HeroService } from '../../services/hero/hero.service';
 
 @Component({
