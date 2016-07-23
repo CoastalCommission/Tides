@@ -4,7 +4,7 @@ import { Router }              from 'angular2/router';
 
 import { Hero }                from '../hero/hero';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
-import { HeroService }         from '../../hero.service';
+import { HeroService }         from '../../services/hero/hero.service';
 
 @Component({
     selector: 'my-heroes',

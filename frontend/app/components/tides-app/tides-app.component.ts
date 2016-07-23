@@ -6,7 +6,7 @@ import { RouteConfig,
 import { DashboardComponent }  from '../dashboard/dashboard.component';
 import { HeroesComponent }     from '../heroes/heroes.component';
 import { HeroDetailComponent } from '../hero-detail/hero-detail.component';
-import { HeroService }         from '../../hero.service';
+import { HeroService }         from '../../services/hero/hero.service';
 
 @Component({
     selector: 'tides-app',

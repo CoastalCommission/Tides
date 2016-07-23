@@ -3,7 +3,7 @@ import { Component,
 import { Router }      from 'angular2/router';
 
 import { Hero }        from '../hero/hero';
-import { HeroService } from '../../hero.service';
+import { HeroService } from '../../services/hero/hero.service';
 
 @Component({
     selector: 'my-dashboard',
