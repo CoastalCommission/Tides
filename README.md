@@ -1,5 +1,4 @@
-# Tides
-## Coastal Publishing
+# Tides - Coastal Publishing
 
 ### Standup Backend
 
