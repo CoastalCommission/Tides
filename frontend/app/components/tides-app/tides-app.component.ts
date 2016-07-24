@@ -7,6 +7,7 @@ import { DashboardComponent }    from '../dashboard/dashboard.component';
 import { HeroesComponent }       from '../heroes/heroes.component';
 import { HeroDetailComponent }   from '../hero-detail/hero-detail.component';
 import { HeroService }           from '../../services/hero/hero.service';
+import { AccessComponent }       from '../access/access.component';
 
 @Component({
     selector: 'tides-app',
@@ -37,6 +38,11 @@ import { HeroService }           from '../../services/hero/hero.service';
         path: '/heroes',
         name: 'Heroes',
         component: HeroesComponent
+    },
+    {
+        path: '/access',
+        name: 'Access',
+        component: AccessComponent
     }
 ])
 

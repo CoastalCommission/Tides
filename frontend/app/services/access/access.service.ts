@@ -12,13 +12,13 @@ import { AccessLocation } from '../../services/access/model/access.model';
 export class AccessService {
     private accessLocationsUrl = 'http://api.coastal.ca.gov/access/v1/locations';  // URL to API
 
-    constructor(private http: Http) { }
+    constructor(private _http: Http) { }
 
     getAccessLocations() {
-        return this.http.get(this.accessLocationsUrl)
-                        .toPromise()
-                        .then(response => response.json().data as AccessLocation[])
-                        .catch(this.handleError);
+        return this._http.get(this.accessLocationsUrl)
+                         .toPromise()
+                         .then(response => response.json().data as AccessLocation[])
+                         .catch(this.handleError);
     }
 
     getAccessLocation(id: number) {
@@ -37,7 +37,7 @@ export class AccessService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         let url = `${this.accessLocationsUrl}/id/${accessLocation.ID}`;
-        return this.http
+        return this._http
                    .delete(url, {headers: headers})
                    .toPromise()
                    .catch(this.handleError);
@@ -47,7 +47,7 @@ export class AccessService {
         let headers = new Headers({
             'Content-Type': 'application/json'});
 
-        return this.http
+        return this._http
                    .post(this.accessLocationsUrl, JSON.stringify(accessLocation), {headers: headers})
                    .toPromise()
                    .then(res => res.json().data)
@@ -58,14 +58,14 @@ export class AccessService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         let url = `${this.accessLocationsUrl}/id/${accessLocation.ID}`;
-        return this.http
+        return this._http
                    .put(url, JSON.stringify(accessLocation), {headers: headers})
                    .toPromise()
                    .then(() => accessLocation)
                    .catch(this.handleError);
     }
 
-    private handleError(error: any) {
+    handleError(error: any) {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     }
