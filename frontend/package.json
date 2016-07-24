@@ -1,5 +1,5 @@
 {
-  "name": "angular2-tour-of-heroes",
+  "name": "tides-app",
   "version": "0.0.1",
   "scripts": {
     "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
@@ -10,11 +10,21 @@
     "typings": "typings"
   },
   "dependencies": {
+    "@angular2-material/button": "^2.0.0-alpha.6",
+    "@angular2-material/card": "^2.0.0-alpha.6",
+    "@angular2-material/checkbox": "^2.0.0-alpha.6",
+    "@angular2-material/core": "^2.0.0-alpha.6",
+    "@angular2-material/icon": "^2.0.0-alpha.6",
+    "@angular2-material/input": "^2.0.0-alpha.6",
+    "@angular2-material/list": "^2.0.0-alpha.6",
+    "@angular2-material/radio": "^2.0.0-alpha.6",
+    "@angular2-material/sidenav": "^2.0.0-alpha.6",
+    "@angular2-material/toolbar": "^2.0.0-alpha.6",
     "angular2": "2.0.0-beta.15",
-    "systemjs": "0.19.26",
     "es6-shim": "^0.35.0",
     "reflect-metadata": "0.1.2",
     "rxjs": "5.0.0-beta.2",
+    "systemjs": "0.19.26",
     "zone.js": "0.6.10"
   },
   "devDependencies": {

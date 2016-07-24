@@ -1,10 +1,11 @@
-import { Injectable }     from 'angular2/core';
-import { Headers,
-         Http }           from 'angular2/http';
-         
+import { Injectable } from 'angular2/core';
+import { Http,
+         Response,
+         Headers }    from 'angular2/http';
+
 import 'rxjs/add/operator/toPromise';
 
-import { AccessLocation } from '../../services/access/type/access.type';
+import { AccessLocation } from '../../services/access/model/access.model';
 
 @Injectable()
 
