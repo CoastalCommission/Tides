@@ -1,7 +1,9 @@
 <div class="grid grid-pad">
-  <div *ngFor="#hero of heroes" (click)="gotoDetail(hero)" class="col-1-4">
-    <div class="module hero">
-      <h4>{{hero.name}}</h4>
+    <div *ngFor="#hero of heroes" (click)="gotoDetail(hero)" class="col-1-4">
+        <div class="module hero">
+            <i class="material-icons">{{ hero.icon }}</i>
+            
+            <h4>{{hero.name}}</h4>
+        </div>
     </div>
-  </div>
 </div>
