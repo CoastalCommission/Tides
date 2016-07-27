@@ -1,9 +1,4 @@
-node_modules
 bower_components
-jspm_packages
-typings
-logs
-*.log
-backend/**/*.db
-frontend/app/**/*.js
-frontend/app/**/*.map
+dist
+node_modules
+build

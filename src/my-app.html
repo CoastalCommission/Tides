@@ -1,0 +1,186 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="my-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+
+<dom-module id="my-app">
+    <template>
+        <style>
+            :host {
+                display: block;
+                --app-primary-color: #4285f4;
+                --app-secondary-color: black;
+            }
+
+            app-header {
+                background-color: var(--app-primary-color);
+                color: #fff;
+            }
+
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: white;
+            }
+
+            .drawer-list {
+                margin: 0 20px;
+            }
+
+            .drawer-list a {
+                display: block;
+                padding: 0 16px;
+                line-height: 40px;
+                text-decoration: none;
+                color: var(--app-secondary-color);
+            }
+
+            .drawer-list a.iron-selected {
+                color: black;
+                font-weight: bold;
+            }
+
+            .drawer-list a.subroute {
+                padding-left: 32px;
+            }
+
+            iron-icon {
+                background-color: #e3e3e3;
+                border-radius: 50%;
+                margin-right: 1.1vw;
+            }
+        </style>
+
+        <app-location route="{{route}}"></app-location>
+
+        <app-route route="{{route}}"
+                   pattern="/:page"
+                   data="{{routeData}}"
+                   tail="{{subroute}}">
+        </app-route>
+
+        <app-drawer-layout fullbleed>
+            <!-- Drawer content -->
+            <app-drawer>
+                <app-toolbar>Menu</app-toolbar>
+
+                <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                    <a name="view1" href="/view1">
+                        <iron-icon icon="maps:directions-bus"></iron-icon>
+                        Access
+                    </a>
+                    <a name="view2" href="/view2">
+                        <iron-icon icon="maps:directions-bus"></iron-icon>
+                        Cleanup
+                    </a>
+                    <a name="view3" href="/view3">
+                        <iron-icon icon="maps:directions-bus"></iron-icon>
+                        CZB
+                    </a>
+                    <a name="view4" href="/view4">
+                        <iron-icon icon="maps:directions-bus"></iron-icon>
+                        LCPs
+                    </a>
+                    <a name="view5" href="/view5">
+                        <iron-icon icon="maps:directions-bus"></iron-icon>
+                        Press
+                    </a>
+                    <a name="view6" href="/view6">
+                        <iron-icon icon="maps:directions-bus"></iron-icon>
+                        Agendas
+                    </a>
+                    <a name="view7" href="/view7">
+                        <iron-icon icon="maps:directions-bus"></iron-icon>
+                        Reports
+                    </a>
+                    <a name="view8" href="/view8">
+                        <iron-icon icon="maps:directions-bus"></iron-icon>
+                        Results
+                    </a>
+                    <a name="view9" href="/view9">
+                        <iron-icon icon="maps:directions-bus"></iron-icon>
+                        Time
+                    </a>
+                    <a name="view10" href="/view10">
+                        <iron-icon icon="maps:directions-bus"></iron-icon>
+                        Accounts
+                    </a>
+                    <a name="view11" href="/view11">
+                        <iron-icon icon="maps:directions-bus"></iron-icon>
+                        Contracts
+                    </a>
+                </iron-selector>
+            </app-drawer>
+
+            <!-- Main content -->
+            <app-header-layout has-scrolling-region>
+                <app-header condenses reveals effects="waterfall">
+                    <app-toolbar>
+                        <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+
+                        <div title>Tides</div>
+                    </app-toolbar>
+                </app-header>
+
+                <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
+                    <my-view1 name="view1"></my-view1>
+                    <my-view2 name="view2"></my-view2>
+                    <my-view3 name="view3"></my-view3>
+                    <my-view4 name="view4"></my-view4>
+                    <my-view5 name="view5"></my-view5>
+                    <my-view6 name="view6"></my-view6>
+                    <my-view7 name="view7"></my-view7>
+                    <my-view8 name="view8"></my-view8>
+                    <my-view9 name="view9"></my-view9>
+                    <my-view10 name="view10"></my-view10>
+                    <my-view11 name="view11"></my-view11>
+                </iron-pages>
+            </app-header-layout>
+        </app-drawer-layout>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'my-app',
+
+            properties: {
+                page: {
+                    type: String,
+                    reflectToAttribute: true,
+                    observer: '_pageChanged'
+                }
+            },
+
+            observers: [
+                '_routePageChanged(routeData.page)'
+            ],
+
+            _routePageChanged: function(page) {
+                this.page = page || 'view1';
+            },
+
+            _pageChanged: function(page) {
+                // load page import on demand.
+                this.importHref(
+                    this.resolveUrl('my-' + page + '.html'), null, null, true);
+            }
+        });
+    </script>
+</dom-module>

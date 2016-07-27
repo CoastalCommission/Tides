@@ -1,0 +1,17 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/my-app.html",
+  "fragments": [
+    "src/my-view1.html",
+    "src/my-view2.html",
+    "src/my-view3.html",
+    "src/my-view4.html",
+    "src/my-view5.html",
+    "src/my-view6.html",
+    "src/my-view7.html",
+    "src/my-view8.html",
+    "src/my-view9.html",
+    "src/my-view10.html",
+    "src/my-view11.html"
+  ]
+}
