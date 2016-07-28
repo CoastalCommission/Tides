@@ -82,49 +82,37 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <app-toolbar>Menu</app-toolbar>
 
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                    <a name="view1" href="/view1">
+                    <a name="coastal-access" href="/coastal-access">
                         <iron-icon icon="maps:directions-bus"></iron-icon>
                         Access
                     </a>
-                    <a name="view2" href="/view2">
+                    <a name="coastal-cleanup" href="/coastal-cleanup">
                         <iron-icon icon="maps:directions-bus"></iron-icon>
                         Cleanup
                     </a>
-                    <a name="view3" href="/view3">
+                    <a name="coastal-zone-boundary" href="/coastal-zone-boundary">
                         <iron-icon icon="maps:directions-bus"></iron-icon>
                         CZB
                     </a>
-                    <a name="view4" href="/view4">
+                    <a name="coastal-lcp" href="/coastal-lcp">
                         <iron-icon icon="maps:directions-bus"></iron-icon>
                         LCPs
                     </a>
-                    <a name="view5" href="/view5">
+                    <a name="coastal-press" href="/coastal-press">
                         <iron-icon icon="maps:directions-bus"></iron-icon>
                         Press
                     </a>
-                    <a name="view6" href="/view6">
+                    <a name="coastal-agendas" href="/coastal-agendas">
                         <iron-icon icon="maps:directions-bus"></iron-icon>
                         Agendas
                     </a>
-                    <a name="view7" href="/view7">
+                    <a name="coastal-reports" href="/coastal-reports">
                         <iron-icon icon="maps:directions-bus"></iron-icon>
                         Reports
                     </a>
-                    <a name="view8" href="/view8">
+                    <a name="coastal-results" href="/coastal-results">
                         <iron-icon icon="maps:directions-bus"></iron-icon>
                         Results
-                    </a>
-                    <a name="view9" href="/view9">
-                        <iron-icon icon="maps:directions-bus"></iron-icon>
-                        Time
-                    </a>
-                    <a name="view10" href="/view10">
-                        <iron-icon icon="maps:directions-bus"></iron-icon>
-                        Accounts
-                    </a>
-                    <a name="view11" href="/view11">
-                        <iron-icon icon="maps:directions-bus"></iron-icon>
-                        Contracts
                     </a>
                 </iron-selector>
             </app-drawer>
@@ -140,17 +128,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </app-header>
 
                 <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-                    <my-view1 name="view1"></my-view1>
-                    <my-view2 name="view2"></my-view2>
-                    <my-view3 name="view3"></my-view3>
-                    <my-view4 name="view4"></my-view4>
-                    <my-view5 name="view5"></my-view5>
-                    <my-view6 name="view6"></my-view6>
-                    <my-view7 name="view7"></my-view7>
-                    <my-view8 name="view8"></my-view8>
-                    <my-view9 name="view9"></my-view9>
-                    <my-view10 name="view10"></my-view10>
-                    <my-view11 name="view11"></my-view11>
+                    <coastal-access name="coastal-access"></coastal-access>
+                    <coastal-cleanup name="coastal-cleanup"></coastal-cleanup>
+                    <coastal-zone-boundary name="coastal-zone-boundary"></coastal-zone-boundary>
+                    <coastal-lcp name="coastal-lcp"></coastal-lcp>
+                    <coastal-press name="coastal-press"></coastal-press>
+                    <coastal-agendas name="coastal-agendas"></coastal-agendas>
+                    <coastal-reports name="coastal-reports"></coastal-reports>
+                    <coastal-results name="coastal-results"></coastal-results>
                 </iron-pages>
             </app-header-layout>
         </app-drawer-layout>
@@ -179,7 +164,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             _pageChanged: function(page) {
                 // load page import on demand.
                 this.importHref(
-                    this.resolveUrl('my-' + page + '.html'), null, null, true);
+                    this.resolveUrl(page + '.html'), null, null, true);
             }
         });
     </script>
